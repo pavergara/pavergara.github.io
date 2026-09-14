@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Portafolio de Videojuegos</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #121212; color: #e0e0e0; margin: 0; padding: 20px; line-height: 1.6; }
+        /*body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #121212; color: #e0e0e0; margin: 0; padding: 20px; line-height: 1.6; }
         header { text-align: center; padding: 40px 0; background: #1e1e1e; border-radius: 8px; margin-bottom: 30px; border-bottom: 3px solid #00ff88; }
         h1 { margin: 0; color: #ffffff; }
         h2 { color: #00ff88; margin-top: 0; }
@@ -19,7 +19,48 @@
         .badge { background: #333; color: #bbb; padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 5px; }
         ul { padding-left: 20px; }
         li { margin-bottom: 10px; }
-        .tech-highlight { font-weight: bold; color: #ffffff; }
+        .tech-highlight { font-weight: bold; color: #ffffff; }*/
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #121212; color: #e0e0e0; margin: 0; padding: 20px; line-height: 1.6; }
+        /*header { text-align: center; padding: 40px 0; background: #1e1e1e; border-radius: 8px; margin-bottom: 20px; }
+        h1 { margin: 0; color: #ffffff; }
+        .container { max-width: 1000px; margin: 0 auto; }*/
+        header { text-align: center; padding: 40px 0; background: #1e1e1e; border-radius: 8px; margin-bottom: 30px; border-bottom: 3px solid #00ff88; }
+        h1 { margin: 0; color: #ffffff; }
+        h2 { color: #00ff88; margin-top: 0; }
+        h3 { color: #3498db; margin-bottom: 5px; }
+        .container { max-width: 950px; margin: 0 auto; }
+        
+        /* --- ESTILOS DE LAS PESTAÑAS (TABS) --- */
+        .tabs-container { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
+        .tab-btn { background: #2a2a2a; color: #888; border: none; padding: 12px 30px; font-size: 1.1em; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.3s; width: 45%; max-width: 250px; }
+        
+        /* Pestaña Unity Activa */
+        .tab-btn.active.unity-tab { background: #00ff88; color: #121212; box-shadow: 0 4px 12px rgba(0,255,136,0.3); }
+        /* Pestaña Unreal Activa */
+        .tab-btn.active.unreal-tab { background: #3498db; color: #ffffff; box-shadow: 0 4px 12px rgba(52,152,219,0.3); }
+        
+        /* Ocultar secciones por defecto */
+        .tab-content { display: none; }
+        /* Mostrar sección activa */
+        .tab-content.active { display: block; }
+
+        /* --- ESTILOS DE TARJETAS DE PROYECTO --- */
+        .project-card { display: flex; background: #1e1e1e; border-radius: 8px; margin-bottom: 25px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .project-info { flex: 1; padding: 20px; }
+        .project-media { width: 40%; max-width: 400px; min-width: 250px; background: #2a2a2a; display: flex; align-items: center; justify-content: center; }
+        .project-media img { width: 100%; height: 100%; object-fit: cover; }
+        
+        @media (max-width: 768px) {
+            .project-card { flex-direction: column; }
+            .project-media { width: 100%; max-width: 100%; }
+        }
+
+        .badge { background: #333; color: #bbb; padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 5px; }
+        .tech-label { font-weight: bold; color: #ffffff; }
+        ul { padding-left: 20px; margin-top: 10px; }
+        li { margin-bottom: 8px; }
+
     </style>
 </head>
 <body>
@@ -30,7 +71,14 @@
             <p>Desarrollador de Videojuegos | Unity & Unreal Engine</p>
         </header>
 
+        <!-- BOTONES DE LAS PESTAÑAS -->
+        <div class="tabs-container">
+            <button class="tab-btn active unity-tab" onclick="switchTab('unity', this)">Unity</button>
+            <button class="tab-btn unreal-tab" onclick="switchTab('unreal', this)">Unreal Engine</button>
+        </div>
+
         <!-- SECCIÓN UNITY: REEL -->
+        <div id="unity" class="tab-content active">
         <div class="section unity-border">
             <h2>Experiencia en Unity & Showreel</h2>
             <p>He participado en el desarrollo de múltiples proyectos utilizando Unity. En el siguiente enlace puedes ver mi reel con fragmentos de gameplay y mecánicas en las que trabajé:</p>
@@ -38,30 +86,11 @@
             <br><br>
             <!-- REEMPLAZA EL ENLACE DE ABAJO CON TU LINK DE DRIVE -->
             <a href="https://drive.google.com/file/d/1tnkDedOoFEhHgy6rJ7gYxwjEH-JYgyBg/view?usp=drive_link" target="_blank" class="btn">▶ Ver Showreel (Google Drive)</a>
-            <!--<p style="font-size: 0.85em; color: #888; margin-top: 10px;">*Nota: Asegúrate de configurar el enlace de Drive como "Cualquier persona con el enlace puede ver".</p>
-        </div>-->
-
-        <!-- SECCIÓN UNREAL: DESGLOSE TÉCNICO -->
-        <div class="section unreal-border">
-            <h2 style="color: #3498db;">Proyecto Piloto en Unreal Engine</h2>
-            <p>Actualmente desarrollo un prototipo enfocado en sistemas avanzados. A continuación, detallo las soluciones técnicas e implementaciones más interesantes del proyecto:</p>
-            <span class="badge">UE5</span> <span class="badge">Blueprints / C++</span>
-            
-            <div style="margin-top: 20px;">
-                <h3>⚙️ Mecánica Interesante 1 (Ej: Sistema de Combate / IA)</h3>
-                <ul>
-                    <li><span class="tech-highlight">Desafío:</span> Describe qué querías lograr o qué problema técnico tenías.</li>
-                    <li><span class="tech-highlight">Implementación:</span> Explica brevemente cómo lo estructuraste (ej: "Optimización mediante Behavior Trees para la IA" o "Uso de Event Dispatchers para desacoplar componentes").</li>
-                </ul>
-
-                <h3>⚙️ Mecánica Interesante 2 (Ej: Optimización / Inventario)</h3>
-                <ul>
-                    <li><span class="tech-highlight">Desafío:</span> Qué hacía compleja a esta mecánica.</li>
-                    <li><span class="tech-highlight">Implementación:</span> Qué herramientas de Unreal usaste para solucionarlo de forma limpia y escalable.</li>
-                </ul>
-            </div>
+            <!--<p style="font-size: 0.85em; color: #888; margin-top: 10px;">*Nota: Asegúrate de configurar el enlace de Drive como "Cualquier persona con el enlace puede ver".</p>-->
         </div>
+        <!--</div>-->
 
+    
 <!-- ================= SECCIÓN UNITY ================= -->
         <h2>Proyectos en Unity</h2>
 
@@ -97,6 +126,32 @@
             </div>
         </div>
 
+        </div>
+
+
+
+        <div id="unreal" class="tab-content">
+        <!-- SECCIÓN UNREAL: DESGLOSE TÉCNICO -->
+        <div class="section unreal-border">
+            <h2 style="color: #3498db;">Proyecto Piloto en Unreal Engine</h2>
+            <p>Actualmente desarrollo un prototipo enfocado en sistemas avanzados. A continuación, detallo las soluciones técnicas e implementaciones más interesantes del proyecto:</p>
+            <span class="badge">UE5</span> <span class="badge">Blueprints / C++</span>
+            
+            <div style="margin-top: 20px;">
+                <h3>⚙️ Mecánica Interesante 1 (Ej: Sistema de Combate / IA)</h3>
+                <ul>
+                    <li><span class="tech-highlight">Desafío:</span> Describe qué querías lograr o qué problema técnico tenías.</li>
+                    <li><span class="tech-highlight">Implementación:</span> Explica brevemente cómo lo estructuraste (ej: "Optimización mediante Behavior Trees para la IA" o "Uso de Event Dispatchers para desacoplar componentes").</li>
+                </ul>
+
+                <h3>⚙️ Mecánica Interesante 2 (Ej: Optimización / Inventario)</h3>
+                <ul>
+                    <li><span class="tech-highlight">Desafío:</span> Qué hacía compleja a esta mecánica.</li>
+                    <li><span class="tech-highlight">Implementación:</span> Qué herramientas de Unreal usaste para solucionarlo de forma limpia y escalable.</li>
+                </ul>
+            </div>
+        </div>
+        <!--</div>-->
 
         <!-- ================= SECCIÓN UNREAL ENGINE ================= -->
         <h2 class="unreal-title">Desglose Técnico en Unreal Engine</h2>
@@ -117,12 +172,27 @@
                 <img src="imagenes/unreal_blueprint1.gif" alt="Muestra de Blueprints o Gameplay">
             </div>
         </div>
-
-
-
       
     </div>
 
+    </div>
+
+     <!-- SCRIPT LOGICA DE INTERCAMBIO DE PESTAÑAS -->
+    <script>
+        function switchTab(tabId, buttonElement) {
+            // Ocultar todos los contenidos de las pestañas
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Quitar la clase activa de todos los botones
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Mostrar el contenido seleccionado y activar su botón correspondiente
+            document.getElementById(tabId).classList.add('active');
+            buttonElement.classList.add('active');
+        }
+    </script>
 
   
 </body>
