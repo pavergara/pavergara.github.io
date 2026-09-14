@@ -3,176 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio de Videojuegos</title>
+    <title>Patricio Vergara Ortiz | Portafolio Game Developer</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #121212; color: #e0e0e0; margin: 0; padding: 20px; line-height: 1.6; }
         header { text-align: center; padding: 40px 0; background: #1e1e1e; border-radius: 8px; margin-bottom: 30px; border-bottom: 3px solid #00ff88; }
         h1 { margin: 0; color: #ffffff; }
+        h2 { margin-top: 0; margin-bottom: 15px; text-transform: uppercase; font-size: 1.5em; letter-spacing: 1px; }
+        h3 { margin-bottom: 5px; margin-top: 0; color: #ffffff; }
         
-        /* Estilos base de espaciado para títulos */
-        h2 { margin-top: 0; }
-        h3 { margin-bottom: 5px; }
-        
-        /* --- ESTILOS EXCLUSIVOS POR REGIÓN --- */
-        /* Región Unity: Todos los niveles de título independientes en verde */
         #unity h2, #unity h3, #unity h4 { color: #00ff88; }
-        
-        /* Región Unreal: Todos los niveles de título independientes en azul */
         #unreal h2, #unreal h3, #unreal h4 { color: #3498db; }
 
-        .container { max-width: 950px; margin: 0 auto; }
-        
-        /* --- ESTILOS DE LAS PESTAÑAS (TABS) --- */
+        .container { max-width: 1000px; margin: 0 auto; }
         .tabs-container { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
         .tab-btn { background: #2a2a2a; color: #888; border: none; padding: 12px 30px; font-size: 1.1em; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.3s; width: 45%; max-width: 250px; }
-        
-        /* Pestaña Unity Activa */
         .tab-btn.active.unity-tab { background: #00ff88; color: #121212; box-shadow: 0 4px 12px rgba(0,255,136,0.3); }
-        /* Pestaña Unreal Activa */
         .tab-btn.active.unreal-tab { background: #3498db; color: #ffffff; box-shadow: 0 4px 12px rgba(52,152,219,0.3); }
         
-        /* Ocultar secciones por defecto */
         .tab-content { display: none; }
-        /* Mostrar sección activa */
         .tab-content.active { display: block; }
 
-        /* --- ESTILOS DE TARJETAS DE PROYECTO --- */
-        .project-card { display: flex; background: #1e1e1e; border-radius: 8px; margin-bottom: 25px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .section { background: #1e1e1e; padding: 25px; border-radius: 8px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .unity-border { border-left: 5px solid #00ff88; }
+        .unreal-border { border-left: 5px solid #3498db; }
+        
+        .btn { display: inline-block; background: #00ff88; color: #121212; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 4px; margin-top: 15px; transition: 0.3s; }
+        .btn:hover { background: #00cc6e; transform: translateY(-2px); }
+
+        .project-card { display: flex; background: #1e1e1e; border-radius: 8px; margin-bottom: 25px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.3); border-left: 5px solid #333; }
+        .unity-card { border-left-color: #00ff88; }
+        .unreal-card { border-left-color: #3498db; }
+        
         .project-info { flex: 1; padding: 20px; }
-        .project-media { width: 40%; max-width: 400px; min-width: 250px; background: #2a2a2a; display: flex; align-items: center; justify-content: center; }
+        .project-media { width: 40%; max-width: 400px; min-width: 250px; background: #2a2a2a; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
         .project-media img { width: 100%; height: 100%; object-fit: cover; }
         
+        /*@media (max-width: 768px) {
+            .project-card { flex-direction: column; }
+            .project-media { width: 100%; max-width: 100%; height: 200px; }
+        }*/
+
+         /* ALTERNANCIA AUTOMÁTICA EN ESCRITORIO (NUEVO) */
+        @media (min-width: 769px) {
+            /* Invierte el orden del texto y el GIF */
+            .project-card:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+            /* Mueve el borde de la izquierda a la derecha en tarjetas pares */
+            .project-card:nth-child(even) {
+                border-left-color: transparent;
+            }
+            .unity-card:nth-child(even) {
+                border-right: 5px solid #00ff88;
+            }
+            .unreal-card:nth-child(even) {
+                border-right: 5px solid #3498db;
+            }
+        }
+        
+        /* AJUSTE PARA PANTALLAS MÓVILES */
         @media (max-width: 768px) {
             .project-card { flex-direction: column; }
-            .project-media { width: 100%; max-width: 100%; }
+            .project-media { width: 100%; max-width: 100%; height: 200px; }
         }
 
-        .badge { background: #333; color: #bbb; padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 5px; }
-        .tech-label { font-weight: bold; color: #ffffff; }
-        .tech-highlight { font-weight: bold; color: #ffffff; }
+        .badge { background: #2b2b2b; color: #e0e0e0; padding: 4px 10px; border-radius: 4px; font-size: 0.8em; font-weight: bold; margin-right: 5px; border: 1px solid #444; display: inline-block; margin-bottom: 5px; }
+        .tech-label, .tech-highlight { font-weight: bold; color: #ffffff; }
         ul { padding-left: 20px; margin-top: 10px; }
         li { margin-bottom: 8px; }
-
+        .contact-info { margin-top: 10px; font-size: 0.95em; color: #aaa; }
+        .contact-info span { margin: 0 10px; }
     </style>
 </head>
 <body>
-
     <div class="container">
         <header>
             <h1>Patricio Alejandro Vergara Ortiz</h1>
-            <p>Desarrollador de Videojuegos | Unity & Unreal Engine</p>
+            <p style="font-size: 1.2em; margin: 5px 0 0 0; color: #bbb;">Ingeniero Civil en Informática | Game Developer Ssr</p>
+            <div class="contact-info">
+                pato.vergara@gmail.com <span>|</span> +569 97740970 <span>|</span> Santiago, Chile
+            </div>
         </header>
 
-        <!-- BOTONES DE LAS PESTAÑAS -->
         <div class="tabs-container">
             <button class="tab-btn active unity-tab" onclick="switchTab('unity', this)">Unity</button>
             <button class="tab-btn unreal-tab" onclick="switchTab('unreal', this)">Unreal Engine</button>
         </div>
 
-        <!-- SECCIÓN UNITY: REEL -->
+        <!-- ================================================================= -->
+        <!-- ======================= SECCIÓN UNITY ========================== -->
+        <!-- ================================================================= -->
         <div id="unity" class="tab-content active">
+            
+            <!-- SHOWREEL GENERAL -->
             <div class="section unity-border">
-                <h2>Experiencia en Unity & Showreel</h2>
-                <p>He participado en el desarrollo de múltiples proyectos utilizando Unity. En el siguiente enlace puedes ver mi reel con fragmentos de gameplay y mecánicas en las que trabajé:</p>
-                <span class="badge">Unity 2D/3D</span> <span class="badge">C#</span>
-                <br><br>
-                <a href="https://google.com" target="_blank" class="btn">▶ Ver Showreel (Google Drive)</a>
+                <h2>Experiencia Core & Showreel</h2>
+                <p>Ingeniero de Software y Desarrollador Líder con sólida experiencia en arquitectura C#, optimización multiplataforma (Mobile, WebGL) y desarrollo ágil. En el siguiente enlace puedes reproducir mi Reel consolidado con clips de mecánicas y proyectos jugables en los que he participado activamente:</p>
+                <span class="badge">Unity 2D/3D</span> <span class="badge">C#</span> <span class="badge">WebGL</span> <span class="badge">Mobile (iOS/Android)</span>
+                <br>
+                
+                <a href="#showreel-completo" class="btn">▼ Ir al Showreel</a>
             </div>
     
-            <!-- ================= SECCIÓN UNITY PROYECTOS ================= -->
             <h2>Proyectos en Unity</h2>
 
-            <!-- Proyecto 1: Globant TCG -->
-            <div class="project-card unity-card" style="border-left: 5px solid #00ff88;">
+            <!-- Proyecto 1: Globant WebGL TCG -->
+            <div class="project-card unity-card">
                 <div class="project-info">
-                    <h3>International TCG (Globant)</h3>
-                    <span class="badge">Unity 3D</span> <span class="badge">C#</span> <span class="badge">WebGL</span> <span class="badge">NFT Integration</span>
-                    <p>Desarrollo de un juego de cartas coleccionables (TCG) internacional enfocado en el rendimiento y escalabilidad web.</p>
+                    <h3>TCG Internacional WebGL | Globant</h3>
+                    <span class="badge">Unity 3D</span> <span class="badge">C#</span> <span class="badge">WebGL</span> <span class="badge">NFT Avatars</span>
+                    <p>Desarrollo de un juego de cartas coleccionables (TCG) internacional enfocado en rendimiento web.</p>
                     <ul>
-                        <li><span class="tech-label">Desarrollo WebGL:</span> Optimización de assets y lógica de juego en C# para garantizar estabilidad en navegadores.</li>
-                        <li><span class="tech-label">Integración Web3:</span> Implementación de mecánicas de personalización avanzada integrando avatares basados en sistemas NFT.</li>
-                        <li><span class="tech-label">Arquitectura Móvil:</span> Creación de prototipos y demos técnicas móviles para la proyección multiplataforma del título.</li>
+                        <li><span class="tech-label">Optimización WebGL:</span> Ingeniería de software orientada a la estabilidad de la lógica de juego y optimización de recursos en navegadores.</li>
+                        <li><span class="tech-label">Integración Web3:</span> Implementación del sistema de personalización in-game mediante avatares basados en tecnologías NFT.</li>
                     </ul>
                 </div>
                 <div class="project-media">
-                    <img src="imagenes/unity_tcg.gif" alt="Fragmento Gameplay TCG WebGL">
+                    <img src="imagenes/unity_tcg.gif" alt="Gameplay TCG WebGL">
                 </div>
             </div>
 
-            <!-- Proyecto Unity 1 -->
-            <div class="project-card" style="border-left: 5px solid #00ff88;">
+            <!-- Proyecto 2: Globant Mobile Demos -->
+            <div class="project-card unity-card">
                 <div class="project-info">
-                    <h3>Nombre del Proyecto 1</h3>
-                    <span class="badge">Unity 3D</span> <span class="badge">C#</span>
-                    <p>Descripción breve del contexto del juego (ej: Shooter en tercera persona, juego de puzzles, etc.).</p>
+                    <h3>Modularización Core & Demos Móviles | Globant</h3>
+                    <span class="badge">Refactoring</span> <span class="badge">C#</span> <span class="badge">Mobile Prototyping</span>
+                    <p>Reestructuración de software e ingeniería de código para optimizar la escalabilidad de sistemas internos.</p>
                     <ul>
-                        <li><span class="tech-label">Mi Rol / Aporte:</span> Programación del sistema de inventario y optimización de físicas.</li>
-                        <li><span class="tech-label">Logro Destacado:</span> Reducción de llamadas de dibujo (Draw Calls) mediante object pooling.</li>
+                        <li><span class="tech-label">Refactorización:</span> Desacoplamiento y modularización completa de un proyecto interno crítico desarrollado en C#.</li>
+                        <li><span class="tech-label">Prototipado:</span> Diseño y creación de demostraciones técnicas en Unity optimizadas para plataformas móviles.</li>
                     </ul>
                 </div>
                 <div class="project-media">
-                    <img src="imagenes/unity_proyecto1.gif" alt="Gameplay Unity Proyecto 1">
+                    <img src="imagenes/unity_demos.gif" alt="Muestra de código o demo móvil">
                 </div>
             </div>
 
-            <!-- Proyecto Unity 2 -->
-            <div class="project-card" style="border-left: 5px solid #00ff88;">
+            <!-- Proyecto 3: Giant Monkey Robot -->
+            <div class="project-card unity-card">
                 <div class="project-info">
-                    <h3>Nombre del Proyecto 2</h3>
-                    <span class="badge">Unity 2D</span> <span class="badge">C#</span>
-                    <p>Descripción breve de este segundo juego en el que participaste.</p>
+                    <h3>Título Internacional Multiplataforma | Giant Monkey Robot (Globant)</h3>
+                    <span class="badge">Game Developer Ssr</span> <span class="badge">.NET C#</span> <span class="badge">iOS / Android</span> <span class="badge">LiveOps</span>
+                    <p>Desarrollo senior enfocado en la solidez del cliente móvil y el mantenimiento de entornos globales distribuidos en tiendas.</p>
                     <ul>
-                        <li><span class="tech-label">Mi Rol / Aporte:</span> Implementación de máquinas de estado para la Inteligencia Artificial de los enemigos.</li>
+                        <li><span class="tech-label">Ingeniería Móvil:</span> Programación lógica en .NET C# y Unity para un videojuego internacional publicado en Android e iOS.</li>
+                        <li><span class="tech-label">Despliegue y Soporte:</span> Responsable de la gestión técnica, lanzamientos de compilaciones críticas y mantenimiento en entornos productivos.</li>
                     </ul>
                 </div>
                 <div class="project-media">
-                    <img src="imagenes/unity_proyecto2.gif" alt="Gameplay Unity Proyecto 2">
+                    <img src="imagenes/unity_mobile_gmr.gif" alt="Título Internacional GMR">
                 </div>
             </div>
+
+            <!-- Proyecto 4: Govic Ingeniería -->
+            <div class="project-card unity-card">
+                <div class="project-info">
+                    <h3>Videojuego "Rodeo Chileno" & VR | Govic Ingeniería</h3>
+                    <span class="badge">Desarrollador</span> <span class="badge">Unity 3D</span> <span class="badge">Realidad Virtual</span> <span class="badge">Mobile Publication</span>
+                    <p>Desarrollo enfocado en experiencias inmersivas a medida y en el ciclo completo de publicación comercial.</p>
+                    <ul>
+                        <li><span class="tech-label">Lanzamiento Comercial:</span> Responsable de la programación, optimización y publicación exitosa del videojuego "Rodeo Chileno" en App Store y Google Play.</li>
+                        <li><span class="tech-label">Experiencias VR:</span> Creación y desarrollo técnico de entornos virtuales e interactivos a medida bajo especificaciones de cliente.</li>
+                    </ul>
+                </div>
+                <div class="project-media">
+                    <img src="imagenes/unity_rodeo.gif" alt="Gameplay Rodeo Chileno">
+                </div>
+            </div>
+
+            <!-- Proyecto 5: Chercan Games -->
+            <div class="project-card unity-card">
+                <div class="project-info">
+                    <h3>Proyectos Independientes & Demos | Chercan Games SpA</h3>
+                    <span class="badge">Lead Programmer / PM</span> <span class="badge">Unity 3D</span> <span class="badge">C#</span> <span class="badge">Architecture</span>
+                    <p>Dirección técnica, gestión de proyectos y diseño arquitectónico integral para un estudio de desarrollo independiente.</p>
+                    <ul>
+                        <li><span class="tech-label">Dirección Técnica:</span> Programación integral del framework de los proyectos, mecánicas centrales y lógica bajo motor Unity/C#.</li>
+                        <li><span class="tech-label">Gestión (PM):</span> Liderazgo del ciclo de desarrollo y la planificación técnica de los prototipos del estudio.</li>
+                    </ul>
+                </div>
+                <div class="project-media">
+                    <img src="imagenes/unity_chercan.gif" alt="Demos Chercan Games">
+                </div>
+            </div>
+
+            <!-- Proyecto 6: APH Labs -->
+            <div class="project-card unity-card">
+                <div class="project-info">
+                    <h3>Videojuego "WAPA" | APH Labs</h3>
+                    <span class="badge">Product Manager</span> <span class="badge">Game Programmer</span> <span class="badge">Google Play Store</span>
+                    <p>Producción unificada con desarrollo técnico para el lanzamiento de software interactivo móvil.</p>
+                    <ul>
+                        <li><span class="tech-label">Programación y Producción:</span> Desarrollo lógico de mecánicas junto con la gestión del ciclo de vida del producto.</li>
+                        <li><span class="tech-label">Publicación Exitosa:</span> Despliegue y distribución oficial del videojuego en la Google App Store.</li>
+                    </ul>
+                </div>
+                <div class="project-media">
+                    <img src="images/anim_gif/Reel_WAPA.gif" alt="Gameplay WAPA">
+                </div>
+            </div>
+            <div id="showreel-completo" class="project-card unity-card" style="display: block; padding: 20px;">
+                <h3 style="margin-bottom: 15px;">▶ Showreel Completo</h3>
+
+                <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 6px; background: #000;">
+                    <!-- REEMPLAZA EL LINK DE ABAJO CON TU ENLACE CONFIGURADO PARA PREVISUALIZACIÓN -->
+                    <iframe 
+                        src="https://drive.google.com/file/d/1tnkDedOoFEhHgy6rJ7gYxwjEH-JYgyBg/preview" 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                        allow="autoplay; encrypted-media" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
         </div>
 
+
+        <!-- ================================================================= -->
+        <!-- ======================= SECCIÓN UNREAL ========================= -->
+        <!-- ================================================================= -->
         <div id="unreal" class="tab-content">
-            <!-- SECCIÓN UNREAL: DESGLOSE TÉCNICO -->
+            
             <div class="section unreal-border">
-                <h2>Proyecto Piloto en Unreal Engine</h2>
-                <p>Actualmente desarrollo un prototipo enfocado en sistemas avanzados. A continuación, detallo las soluciones técnicas e implementaciones más interesantes del proyecto:</p>
-                <span class="badge">UE5</span> <span class="badge">Blueprints / C++</span>
-                
-                <div style="margin-top: 20px;">
-                    <h3>⚙️ Mecánica Interesante 1 (Ej: Sistema de Combate / IA)</h3>
-                    <ul>
-                        <li><span class="tech-highlight">Desafío:</span> Describe qué querías lograr o qué problema técnico tenías.</li>
-                        <li><span class="tech-highlight">Implementación:</span> Explica brevemente cómo lo estructuraste (ej: "Optimización mediante Behavior Trees para la IA" o "Uso de Event Dispatchers para desacoplar componentes").</li>
-                    </ul>
-
-                    <h3>⚙️ Mecánica Interesante 2 (Ej: Optimización / Inventario)</h3>
-                    <ul>
-                        <li><span class="tech-highlight">Desafío:</span> Qué hacía compleja a esta mecánica.</li>
-                        <li><span class="tech-highlight">Implementación:</span> Qué herramientas de Unreal usaste para solucionarlo de forma limpia y escalable.</li>
-                    </ul>
-                </div>
+                <h2>Sistemas e Ingeniería en Unreal Engine</h2>
+                <p>Especialización técnica orientada a la extensibilidad del motor mediante código nativo y el desarrollo de sistemas robustos mediante Blueprints complejos y optimizados.</p>
+                <span class="badge">UE5</span> <span class="badge">C++ Nativo</span> <span class="badge">Plugins</span> <span class="badge">Blueprints Avanzados</span>
             </div>
 
-            <!-- ================= SECCIÓN UNREAL ENGINE TARJETAS ================= -->
-            <h2 class="unreal-title">Desglose Técnico en Unreal Engine</h2>
+            <h2>Desglose de Hitos Técnicos (Prototipo Piloto)</h2>
 
-            <!-- Mecánica Unreal 1 -->
-            <div class="project-card" style="border-left: 5px solid #3498db;">
+            <!-- Hito Unreal 1: Plugins -->
+            <div class="project-card unreal-card">
                 <div class="project-info">
-                    <h3>Sistema de [Nombre de la Mecánica]</h3>
-                    <span class="badge">UE5</span> <span class="badge">Blueprints</span>
-                    <p>Explicación de la característica interesante que creaste en tu prototipo piloto.</p>
+                    <h3>Desarrollo de Plugins de Motor (Globant)</h3>
+                    <span class="badge">UE5</span> <span class="badge">C++ Nativo</span> <span class="badge">Engine Extensibility</span>
+                    <p>Creación de herramientas modulares internas para optimizar los flujos de producción en equipos de desarrollo en Globant.</p>
                     <ul>
-                        <li><span class="tech-label">El Desafío:</span> Por qué era complejo o qué problema buscabas solucionar.</li>
-                        <li><span class="tech-label">Solución Técnica:</span> "Diseñado modularmente usando interfaces para evitar dependencias duras (Hard References)".</li>
+                        <li><span class="tech-highlight">El Desafío:</span> Extender las capacidades del editor o de runtime de Unreal Engine 5 mediante código desacoplado y reutilizable en diferentes proyectos.</li>
+                        <li><span class="tech-highlight">Implementación:</span> Programación nativa de un plugin en C++ integrado directamente en la arquitectura del ciclo de vida de Unreal.</li>
                     </ul>
                 </div>
                 <div class="project-media">
-                    <img src="imagenes/unreal_blueprint1.gif" alt="Muestra de Blueprints o Gameplay">
+                    <img src="imagenes/unreal_plugin.gif" alt="Muestra de código o integración de Plugin C++">
+                </div>
+            </div>
+
+            <!-- Hito Unreal 2: Arquitectura -->
+            <div class="project-card unreal-card">
+                <div class="project-info">
+                    <h3>Arquitectura de Sistemas (Prototipo Piloto)</h3>
+                    <span class="badge">UE5</span> <span class="badge">Blueprints de Sistemas</span> <span class="badge">Event Driven</span>
+                    <p>Desarrollo de mecánicas complejas enfocadas en escalabilidad y en evitar problemas comunes de rendimiento en Unreal Engine.</p>
+                    <ul>
+                        <li><span class="tech-highlight">Interconexión Modular:</span> Uso de Interfaces y Event Dispatchers para asegurar una comunicación limpia entre actores, eliminando las dependencias duras (*Hard References*) que saturan la memoria.</li>
+                        <li><span class="tech-highlight">Estructura del Gameplay:</span> Implementación estructurada de lógicas de mecánicas basadas en componentes lógicos reutilizables (*Actor Components*).</li>
+                    </ul>
+                </div>
+                <div class="project-media">
+                    <img src="imagenes/unreal_gameplay.gif" alt="Muestra de Blueprints o Gameplay Técnico en UE5">
                 </div>
             </div>
         </div>
-    </div>
+    </div> <!-- Fin .container -->
 
     <!-- SCRIPT LOGICA DE INTERCAMBIO DE PESTAÑAS -->
     <script>
