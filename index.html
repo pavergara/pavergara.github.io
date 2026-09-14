@@ -5,30 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Portafolio de Videojuegos</title>
     <style>
-        /*body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #121212; color: #e0e0e0; margin: 0; padding: 20px; line-height: 1.6; }
-        header { text-align: center; padding: 40px 0; background: #1e1e1e; border-radius: 8px; margin-bottom: 30px; border-bottom: 3px solid #00ff88; }
-        h1 { margin: 0; color: #ffffff; }
-        h2 { color: #00ff88; margin-top: 0; }
-        h3 { color: #3498db; margin-bottom: 5px; }
-        .container { max-width: 950px; margin: 0 auto; }
-        .section { background: #1e1e1e; padding: 25px; border-radius: 8px; margin-bottom: 25px; }
-        .unity-border { border-left: 5px solid #00ff88; }
-        .unreal-border { border-left: 5px solid #3498db; }
-        .btn { display: inline-block; background: #00ff88; color: #121212; padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 4px; margin-top: 10px; transition: 0.3s; }
-        .btn:hover { background: #00cc6e; }
-        .badge { background: #333; color: #bbb; padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 5px; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
-        .tech-highlight { font-weight: bold; color: #ffffff; }*/
-
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #121212; color: #e0e0e0; margin: 0; padding: 20px; line-height: 1.6; }
-        /*header { text-align: center; padding: 40px 0; background: #1e1e1e; border-radius: 8px; margin-bottom: 20px; }
-        h1 { margin: 0; color: #ffffff; }
-        .container { max-width: 1000px; margin: 0 auto; }*/
         header { text-align: center; padding: 40px 0; background: #1e1e1e; border-radius: 8px; margin-bottom: 30px; border-bottom: 3px solid #00ff88; }
         h1 { margin: 0; color: #ffffff; }
-        h2 { color: #00ff88; margin-top: 0; }
-        h3 { color: #3498db; margin-bottom: 5px; }
+        
+        /* Estilos base de espaciado para títulos */
+        h2 { margin-top: 0; }
+        h3 { margin-bottom: 5px; }
+        
+        /* --- ESTILOS EXCLUSIVOS POR REGIÓN --- */
+        /* Región Unity: Todos los niveles de título independientes en verde */
+        #unity h2, #unity h3, #unity h4 { color: #00ff88; }
+        
+        /* Región Unreal: Todos los niveles de título independientes en azul */
+        #unreal h2, #unreal h3, #unreal h4 { color: #3498db; }
+
         .container { max-width: 950px; margin: 0 auto; }
         
         /* --- ESTILOS DE LAS PESTAÑAS (TABS) --- */
@@ -58,6 +49,7 @@
 
         .badge { background: #333; color: #bbb; padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 5px; }
         .tech-label { font-weight: bold; color: #ffffff; }
+        .tech-highlight { font-weight: bold; color: #ffffff; }
         ul { padding-left: 20px; margin-top: 10px; }
         li { margin-bottom: 8px; }
 
@@ -79,121 +71,121 @@
 
         <!-- SECCIÓN UNITY: REEL -->
         <div id="unity" class="tab-content active">
-        <div class="section unity-border">
-            <h2>Experiencia en Unity & Showreel</h2>
-            <p>He participado en el desarrollo de múltiples proyectos utilizando Unity. En el siguiente enlace puedes ver mi reel con fragmentos de gameplay y mecánicas en las que trabajé:</p>
-            <span class="badge">Unity 2D/3D</span> <span class="badge">C#</span>
-            <br><br>
-            <!-- REEMPLAZA EL ENLACE DE ABAJO CON TU LINK DE DRIVE -->
-            <a href="https://drive.google.com/file/d/1tnkDedOoFEhHgy6rJ7gYxwjEH-JYgyBg/view?usp=drive_link" target="_blank" class="btn">▶ Ver Showreel (Google Drive)</a>
-            <!--<p style="font-size: 0.85em; color: #888; margin-top: 10px;">*Nota: Asegúrate de configurar el enlace de Drive como "Cualquier persona con el enlace puede ver".</p>-->
-        </div>
-        <!--</div>-->
-
+            <div class="section unity-border">
+                <h2>Experiencia en Unity & Showreel</h2>
+                <p>He participado en el desarrollo de múltiples proyectos utilizando Unity. En el siguiente enlace puedes ver mi reel con fragmentos de gameplay y mecánicas en las que trabajé:</p>
+                <span class="badge">Unity 2D/3D</span> <span class="badge">C#</span>
+                <br><br>
+                <a href="https://google.com" target="_blank" class="btn">▶ Ver Showreel (Google Drive)</a>
+            </div>
     
-<!-- ================= SECCIÓN UNITY ================= -->
-        <h2>Proyectos en Unity</h2>
+            <!-- ================= SECCIÓN UNITY PROYECTOS ================= -->
+            <h2>Proyectos en Unity</h2>
 
-        <!-- Proyecto Unity 1 -->
-        <div class="project-card" style="border-left: 5px solid #00ff88;">
-            <div class="project-info">
-                <h3>Nombre del Proyecto 1</h3>
-                <span class="badge">Unity 3D</span> <span class="badge">C#</span>
-                <p>Descripción breve del contexto del juego (ej: Shooter en tercera persona, juego de puzzles, etc.).</p>
-                <ul>
-                    <li><span class="tech-label">Mi Rol / Aporte:</span> Programación del sistema de inventario y optimización de físicas.</li>
-                    <li><span class="tech-label">Logro Destacado:</span> Reducción de llamadas de dibujo (Draw Calls) mediante object pooling.</li>
-                </ul>
+            <!-- Proyecto 1: Globant TCG -->
+            <div class="project-card unity-card" style="border-left: 5px solid #00ff88;">
+                <div class="project-info">
+                    <h3>International TCG (Globant)</h3>
+                    <span class="badge">Unity 3D</span> <span class="badge">C#</span> <span class="badge">WebGL</span> <span class="badge">NFT Integration</span>
+                    <p>Desarrollo de un juego de cartas coleccionables (TCG) internacional enfocado en el rendimiento y escalabilidad web.</p>
+                    <ul>
+                        <li><span class="tech-label">Desarrollo WebGL:</span> Optimización de assets y lógica de juego en C# para garantizar estabilidad en navegadores.</li>
+                        <li><span class="tech-label">Integración Web3:</span> Implementación de mecánicas de personalización avanzada integrando avatares basados en sistemas NFT.</li>
+                        <li><span class="tech-label">Arquitectura Móvil:</span> Creación de prototipos y demos técnicas móviles para la proyección multiplataforma del título.</li>
+                    </ul>
+                </div>
+                <div class="project-media">
+                    <img src="imagenes/unity_tcg.gif" alt="Fragmento Gameplay TCG WebGL">
+                </div>
             </div>
-            <div class="project-media">
-                <!-- REEMPLAZA CON LA RUTA DE TU GIF DE UNITY -->
-                <img src="imagenes/unity_proyecto1.gif" alt="Gameplay Unity Proyecto 1">
+
+            <!-- Proyecto Unity 1 -->
+            <div class="project-card" style="border-left: 5px solid #00ff88;">
+                <div class="project-info">
+                    <h3>Nombre del Proyecto 1</h3>
+                    <span class="badge">Unity 3D</span> <span class="badge">C#</span>
+                    <p>Descripción breve del contexto del juego (ej: Shooter en tercera persona, juego de puzzles, etc.).</p>
+                    <ul>
+                        <li><span class="tech-label">Mi Rol / Aporte:</span> Programación del sistema de inventario y optimización de físicas.</li>
+                        <li><span class="tech-label">Logro Destacado:</span> Reducción de llamadas de dibujo (Draw Calls) mediante object pooling.</li>
+                    </ul>
+                </div>
+                <div class="project-media">
+                    <img src="imagenes/unity_proyecto1.gif" alt="Gameplay Unity Proyecto 1">
+                </div>
+            </div>
+
+            <!-- Proyecto Unity 2 -->
+            <div class="project-card" style="border-left: 5px solid #00ff88;">
+                <div class="project-info">
+                    <h3>Nombre del Proyecto 2</h3>
+                    <span class="badge">Unity 2D</span> <span class="badge">C#</span>
+                    <p>Descripción breve de este segundo juego en el que participaste.</p>
+                    <ul>
+                        <li><span class="tech-label">Mi Rol / Aporte:</span> Implementación de máquinas de estado para la Inteligencia Artificial de los enemigos.</li>
+                    </ul>
+                </div>
+                <div class="project-media">
+                    <img src="imagenes/unity_proyecto2.gif" alt="Gameplay Unity Proyecto 2">
+                </div>
             </div>
         </div>
-
-        <!-- Proyecto Unity 2 -->
-        <div class="project-card" style="border-left: 5px solid #00ff88;">
-            <div class="project-info">
-                <h3>Nombre del Proyecto 2</h3>
-                <span class="badge">Unity 2D</span> <span class="badge">C#</span>
-                <p>Descripción breve de este segundo juego en el que participaste.</p>
-                <ul>
-                    <li><span class="tech-label">Mi Rol / Aporte:</span> Implementación de máquinas de estado para la Inteligencia Artificial de los enemigos.</li>
-                </ul>
-            </div>
-            <div class="project-media">
-                <img src="imagenes/unity_proyecto2.gif" alt="Gameplay Unity Proyecto 2">
-            </div>
-        </div>
-
-        </div>
-
-
 
         <div id="unreal" class="tab-content">
-        <!-- SECCIÓN UNREAL: DESGLOSE TÉCNICO -->
-        <div class="section unreal-border">
-            <h2 style="color: #3498db;">Proyecto Piloto en Unreal Engine</h2>
-            <p>Actualmente desarrollo un prototipo enfocado en sistemas avanzados. A continuación, detallo las soluciones técnicas e implementaciones más interesantes del proyecto:</p>
-            <span class="badge">UE5</span> <span class="badge">Blueprints / C++</span>
-            
-            <div style="margin-top: 20px;">
-                <h3>⚙️ Mecánica Interesante 1 (Ej: Sistema de Combate / IA)</h3>
-                <ul>
-                    <li><span class="tech-highlight">Desafío:</span> Describe qué querías lograr o qué problema técnico tenías.</li>
-                    <li><span class="tech-highlight">Implementación:</span> Explica brevemente cómo lo estructuraste (ej: "Optimización mediante Behavior Trees para la IA" o "Uso de Event Dispatchers para desacoplar componentes").</li>
-                </ul>
+            <!-- SECCIÓN UNREAL: DESGLOSE TÉCNICO -->
+            <div class="section unreal-border">
+                <h2>Proyecto Piloto en Unreal Engine</h2>
+                <p>Actualmente desarrollo un prototipo enfocado en sistemas avanzados. A continuación, detallo las soluciones técnicas e implementaciones más interesantes del proyecto:</p>
+                <span class="badge">UE5</span> <span class="badge">Blueprints / C++</span>
+                
+                <div style="margin-top: 20px;">
+                    <h3>⚙️ Mecánica Interesante 1 (Ej: Sistema de Combate / IA)</h3>
+                    <ul>
+                        <li><span class="tech-highlight">Desafío:</span> Describe qué querías lograr o qué problema técnico tenías.</li>
+                        <li><span class="tech-highlight">Implementación:</span> Explica brevemente cómo lo estructuraste (ej: "Optimización mediante Behavior Trees para la IA" o "Uso de Event Dispatchers para desacoplar componentes").</li>
+                    </ul>
 
-                <h3>⚙️ Mecánica Interesante 2 (Ej: Optimización / Inventario)</h3>
-                <ul>
-                    <li><span class="tech-highlight">Desafío:</span> Qué hacía compleja a esta mecánica.</li>
-                    <li><span class="tech-highlight">Implementación:</span> Qué herramientas de Unreal usaste para solucionarlo de forma limpia y escalable.</li>
-                </ul>
+                    <h3>⚙️ Mecánica Interesante 2 (Ej: Optimización / Inventario)</h3>
+                    <ul>
+                        <li><span class="tech-highlight">Desafío:</span> Qué hacía compleja a esta mecánica.</li>
+                        <li><span class="tech-highlight">Implementación:</span> Qué herramientas de Unreal usaste para solucionarlo de forma limpia y escalable.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ================= SECCIÓN UNREAL ENGINE TARJETAS ================= -->
+            <h2 class="unreal-title">Desglose Técnico en Unreal Engine</h2>
+
+            <!-- Mecánica Unreal 1 -->
+            <div class="project-card" style="border-left: 5px solid #3498db;">
+                <div class="project-info">
+                    <h3>Sistema de [Nombre de la Mecánica]</h3>
+                    <span class="badge">UE5</span> <span class="badge">Blueprints</span>
+                    <p>Explicación de la característica interesante que creaste en tu prototipo piloto.</p>
+                    <ul>
+                        <li><span class="tech-label">El Desafío:</span> Por qué era complejo o qué problema buscabas solucionar.</li>
+                        <li><span class="tech-label">Solución Técnica:</span> "Diseñado modularmente usando interfaces para evitar dependencias duras (Hard References)".</li>
+                    </ul>
+                </div>
+                <div class="project-media">
+                    <img src="imagenes/unreal_blueprint1.gif" alt="Muestra de Blueprints o Gameplay">
+                </div>
             </div>
         </div>
-        <!--</div>-->
-
-        <!-- ================= SECCIÓN UNREAL ENGINE ================= -->
-        <h2 class="unreal-title">Desglose Técnico en Unreal Engine</h2>
-
-        <!-- Mecánica Unreal 1 -->
-        <div class="project-card" style="border-left: 5px solid #3498db;">
-            <div class="project-info">
-                <h3>Sistema de [Nombre de la Mecánica]</h3>
-                <span class="badge">UE5</span> <span class="badge">Blueprints</span>
-                <p>Explicación de la característica interesante que creaste en tu prototipo piloto.</p>
-                <ul>
-                    <li><span class="tech-label">El Desafío:</span> Por qué era complejo o qué problema buscabas solucionar.</li>
-                    <li><span class="tech-label">Solución Técnica:</span> "Diseñado modularmente usando interfaces para evitar dependencias duras (Hard References)".</li>
-                </ul>
-            </div>
-            <div class="project-media">
-                <!-- REEMPLAZA CON TU GIF DE GAMEPLAY O DE LOS BLUEPRINTS -->
-                <img src="imagenes/unreal_blueprint1.gif" alt="Muestra de Blueprints o Gameplay">
-            </div>
-        </div>
-      
     </div>
 
-    </div>
-
-     <!-- SCRIPT LOGICA DE INTERCAMBIO DE PESTAÑAS -->
+    <!-- SCRIPT LOGICA DE INTERCAMBIO DE PESTAÑAS -->
     <script>
         function switchTab(tabId, buttonElement) {
-            // Ocultar todos los contenidos de las pestañas
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
             
-            // Quitar la clase activa de todos los botones
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             
-            // Mostrar el contenido seleccionado y activar su botón correspondiente
             document.getElementById(tabId).classList.add('active');
             buttonElement.classList.add('active');
         }
     </script>
-
-  
 </body>
 </html>
