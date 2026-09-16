@@ -1,31 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patricio Vergara Ortiz | Portafolio Game Developer</title>
-
-    <!-- FUENTES DESDE GOOGLE FONTS -->
     
+    <!-- FUENTES DESDE GOOGLE FONTS -->
     <link href="https://googleapis.com" rel="stylesheet">
 
-    <!-- TU NUEVO ARCHIVO DE ESTILOS SEPARADO -->
+    <!-- TU RUTA REAL EXACTA DESDE TU COMPUTADORA -->
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <div class="container">
+        <!-- CABECERA (HEADER) GLOBAL -->
         <header>
             <h1>Patricio Alejandro Vergara Ortiz</h1>
-            
             <!-- SELECTOR DE IDIOMA -->
             <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 10px;">
-                <button class="lang-btn active" onclick="changeLanguage('es', this)" style="background: #2a2a2a; color: #fff; border: 1px solid #444; padding: 6px 12px; border-radius: 4px; cursor: pointer;">ESP</button>
-                <button class="lang-btn" onclick="changeLanguage('en', this)" style="background: #2a2a2a; color: #fff; border: 1px solid #444; padding: 6px 12px; border-radius: 4px; cursor: pointer;">ENG</button>
+                <button class="lang-btn" onclick="changeLanguage('es', this)" style="background: #2a2a2a; color: #fff; border: 1px solid #444; padding: 6px 12px; border-radius: 4px; cursor: pointer;">ESP</button>
+                <button class="lang-btn active" onclick="changeLanguage('en', this)" style="background: #2a2a2a; color: #fff; border: 1px solid #444; padding: 6px 12px; border-radius: 4px; cursor: pointer;">ENG</button>
             </div>
             
-            <!-- Una sola etiqueta que cambia de texto dinámicamente con el JSON -->
             <div>
-                <p style="font-size: 1.2em; margin: 5px 0 0 0; color: #bbb;" data-i18n="header_role"></p>
+                <p style="font-size: 1.2em; margin: 5px 0 0 0; color: #bbb;" data-i18n="general.role"></p>
             </div>
             
             <div class="contact-info">
@@ -33,46 +31,44 @@
             </div>
         </header>
 
+        <!-- NAVEGACIÓN PRINCIPAL -->
         <div class="tabs-container">
-            <button class="tab-btn active unity-tab" onclick="switchTab('unity', this)" data-i18n="nav_unity"></button>
-            <button class="tab-btn unreal-tab" onclick="switchTab('unreal', this)" data-i18n="nav_unreal"></button>
+            <button class="tab-btn active unity-tab" onclick="switchTab('unity', this)" data-i18n="general.nav_unity"></button>
+            <button class="tab-btn unreal-tab" onclick="switchTab('unreal', this)" data-i18n="general.nav_unreal"></button>
         </div>
-
         <!-- ================================================================= -->
-        <!-- ======================= SECCIÓN UNITY ========================== -->
+        <!-- APARTADO DE PROYECTOS UNITY                                       -->
         <!-- ================================================================= -->
         <div id="unity" class="tab-content active">
-            
-            <!-- SHOWREEL GENERAL -->
+            <!-- Showreel Intro -->
             <div class="section unity-border">
-                <h2 data-i18n="unity_reel_title"></h2>
-                <p data-i18n="unity_reel_desc"></p>
+                <h2 data-i18n="general.unity_reel_title"></h2>
+                <p data-i18n="general.unity_reel_desc"></p>
                 <span class="badge">Unity 2D/3D</span> <span class="badge">C#</span> <span class="badge">WebGL</span> <span class="badge">Mobile (iOS/Android)</span>
                 <br>
-                <a href="#showreel-completo" class="btn" data-i18n="unity_reel_btn"></a>
+                <a href="#showreel-completo" class="btn" data-i18n="general.unity_reel_btn"></a>
             </div>
     
-            <h2 data-i18n="nav_unity"></h2> <!-- Título de sección dinámico -->
+            <h2 data-i18n="general.nav_unity"></h2>
 
-            <!-- Proyecto 2: Globant Mobile Demos -->
+            <!-- Tarjeta 1: Globant Mobile Demos -->
             <div class="project-card unity-card">
                 <div class="project-info">
-                    <h3>Demo Móvil | Globant</h3>
+                    <h3 data-i18n="unity.p1_company"></h3>
                     <span class="badge">Refactoring</span> <span class="badge">C#</span> <span class="badge">Mobile Prototyping</span>
-                    <p>Reestructuración de software e ingeniería de código para optimizar la escalabilidad de sistemas internos.</p>
+                    <p data-i18n="unity.p1_desc"></p>
                     <ul>
-                        <li><span class="tech-label">Refactorización:</span> Desacoplamiento y modularización completa de un SDK interno crítico desarrollado en C#.</li>
-                        <li><span class="tech-label">Prototipado:</span> Diseño y creación de demostraciones técnicas en Unity optimizadas para plataformas móviles.
-                        <!-- Segundo nivel de bullets (Sub-lista anidada) -->
+                        <li><span class="tech-label" data-i18n="unity.p1_lbl_refactor"></span> <span data-i18n="unity.p1_txt_refactor"></span></li>
+                        <li>
+                            <span class="tech-label" data-i18n="unity.p1_lbl_proto"></span> <span data-i18n="unity.p1_txt_proto"></span>
                             <ul>
-                                <li>Simulación de físicas de conducción arcade.</li>
+                                <li data-i18n="unity.p1_sub1"></li>
                                 <li>
-                                    Integración a servidor de funcionalidades online por medio de un SDK custom:
-                                    <!-- Tercer nivel opcional si requieres hilar aún más fino o mantenerlo ordenado -->
+                                    <span data-i18n="unity.p1_sub2"></span>
                                     <ul>
-                                        <li>Manejo de sesión en servidor, con intercambio de datos como nombre de perfil, inventario, entre otros.</li>
-                                        <li>Sistema de puntuación y ranking integrado a plataforma online.</li>
-                                        <li>Sistema de recompensas manejado directamente desde el servidor.</li>
+                                        <li data-i18n="unity.p1_sub2_sub1"></li>
+                                        <li data-i18n="unity.p1_sub2_sub2"></li>
+                                        <li data-i18n="unity.p1_sub2_sub3"></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -84,31 +80,31 @@
                 </div>
             </div>
 
-            <!-- Proyecto 1: Globant WebGL TCG -->
+            <!-- Tarjeta 2: Reign of Titans -->
             <div class="project-card unity-card">
                 <div class="project-info">
-                    <h3>TCG Internacional WebGL | Globant</h3>
+                    <h3 data-i18n="unity.p2_company"></h3>
                     <span class="badge">Unity 3D</span> <span class="badge">C#</span> <span class="badge">WebGL</span> <span class="badge">NFT Avatars</span>
-                    <p>Desarrollo de un juego de cartas coleccionables (TCG) internacional enfocado en rendimiento web.</p>
+                    <p data-i18n="unity.p2_desc"></p>
                     <ul>
-                        <li><span class="tech-label">Optimización WebGL:</span> Ingeniería de software orientada a la estabilidad de la lógica de juego y optimización de recursos en navegadores.</li>
-                        <li><span class="tech-label">Integración Web3:</span> Implementación del sistema de personalización in-game mediante avatares basados en tecnologías NFT.</li>
+                        <li><span class="tech-label" data-i18n="unity.p2_lbl_web3"></span> <span data-i18n="unity.p2_txt_web3"></span></li>
+                        <li><span class="tech-label" data-i18n="unity.p2_lbl_opt"></span> <span data-i18n="unity.p2_txt_opt"></span></li>
                     </ul>
                 </div>
                 <div class="project-media">
-                    <img src="imagenes/unity_tcg.gif" alt="Gameplay TCG WebGL">
+                    <img src="images/anim_gif/Rell_PVergara_2026_titans_cut.gif" alt="Gameplay Reign of Titans">
                 </div>
             </div>
 
-            <!-- Proyecto 3: Giant Monkey Robot -->
+            <!-- Tarjeta 3: Giant Monkey Robot -->
             <div class="project-card unity-card">
                 <div class="project-info">
-                    <h3>Título Internacional Multiplataforma | Giant Monkey Robot (Globant)</h3>
+                    <h3 data-i18n="unity.p3_company"></h3>
                     <span class="badge">Game Developer Ssr</span> <span class="badge">.NET C#</span> <span class="badge">iOS / Android</span> <span class="badge">LiveOps</span>
-                    <p>Desarrollo senior enfocado en la solidez del cliente móvil y el mantenimiento de entornos globales distribuidos en tiendas.</p>
+                    <p data-i18n="unity.p3_desc"></p>
                     <ul>
-                        <li><span class="tech-label">Ingeniería Móvil:</span> Programación lógica en .NET C# y Unity para un videojuego internacional publicado en Android e iOS.</li>
-                        <li><span class="tech-label">Despliegue y Soporte:</span> Responsable de la gestión técnica, lanzamientos de compilaciones críticas y mantenimiento en entornos productivos.</li>
+                        <li><span class="tech-label" data-i18n="unity.p3_lbl_eng"></span> <span data-i18n="unity.p3_txt_eng"></span></li>
+                        <li><span class="tech-label" data-i18n="unity.p3_lbl_ops"></span> <span data-i18n="unity.p3_txt_ops"></span></li>
                     </ul>
                 </div>
                 <div class="project-media">
@@ -116,31 +112,30 @@
                 </div>
             </div>
 
-            <!-- Proyecto 4: Govic Ingeniería -->
+            <!-- Tarjeta 4: Govic Ingeniería (Rodeo Chileno) -->
             <div class="project-card unity-card">
                 <div class="project-info">
-                    <h3>Videojuego "Rodeo Chileno" & VR | Govic Ingeniería</h3>
+                    <h3 data-i18n="unity.p4_company"></h3>
                     <span class="badge">Desarrollador</span> <span class="badge">Unity 3D</span> <span class="badge">Realidad Virtual</span> <span class="badge">Mobile Publication</span>
-                    <p>Desarrollo enfocado en experiencias inmersivas a medida y en el ciclo completo de publicación comercial.</p>
+                    <p data-i18n="unity.p4_desc"></p>
                     <ul>
-                        <li><span class="tech-label">Lanzamiento Comercial:</span> Responsable de la programación, optimización y publicación exitosa del videojuego "Rodeo Chileno" en App Store y Google Play.</li>
-                        <li><span class="tech-label">Experiencias VR:</span> Creación y desarrollo técnico de entornos virtuales e interactivos a medida bajo especificaciones de cliente.</li>
+                        <li><span class="tech-label" data-i18n="unity.p4_lbl_launch"></span> <span data-i18n="unity.p4_txt_launch"></span></li>
+                        <li><span class="tech-label" data-i18n="unity.p4_lbl_vr"></span> <span data-i18n="unity.p4_txt_vr"></span></li>
                     </ul>
                 </div>
                 <div class="project-media">
                     <img src="imagenes/unity_rodeo.gif" alt="Gameplay Rodeo Chileno">
                 </div>
             </div>
-
-            <!-- Proyecto 5: Chercan Games -->
+            <!-- Tarjeta 5: Chercan Games SpA -->
             <div class="project-card unity-card">
                 <div class="project-info">
-                    <h3>Proyectos Independientes & Demos | Chercan Games SpA</h3>
+                    <h3 data-i18n="unity.p5_company"></h3>
                     <span class="badge">Lead Programmer / PM</span> <span class="badge">Unity 3D</span> <span class="badge">C#</span> <span class="badge">Architecture</span>
-                    <p>Dirección técnica, gestión de proyectos y diseño arquitectónico integral para un estudio de desarrollo independiente.</p>
+                    <p data-i18n="unity.p5_desc"></p>
                     <ul>
-                        <li><span class="tech-label">Dirección Técnica:</span> Programación integral del framework de los proyectos, mecánicas centrales y lógica bajo motor Unity/C#.</li>
-                        <li><span class="tech-label">Gestión (PM):</span> Liderazgo del ciclo de desarrollo y la planificación técnica de los prototipos del estudio.</li>
+                        <li><span class="tech-label" data-i18n="unity.p5_lbl_dir"></span> <span data-i18n="unity.p5_txt_dir"></span></li>
+                        <li><span class="tech-label" data-i18n="unity.p5_lbl_pm"></span> <span data-i18n="unity.p5_txt_pm"></span></li>
                     </ul>
                 </div>
                 <div class="project-media">
@@ -148,232 +143,125 @@
                 </div>
             </div>
 
-            <!-- Proyecto 6: APH Labs -->
+            <!-- Tarjeta 6: APH Labs (WAPA) -->
             <div class="project-card unity-card">
                 <div class="project-info">
-                    <h3>Videojuego "WAPA" | APH Labs</h3>
+                    <h3 data-i18n="unity.p6_company"></h3>
                     <span class="badge">Product Manager</span> <span class="badge">Game Programmer</span> <span class="badge">Google Play Store</span>
-                    <p>Producción unificada con desarrollo técnico para el lanzamiento de software interactivo móvil.</p>
+                    <p data-i18n="unity.p6_desc"></p>
                     <ul>
-                        <li><span class="tech-label">Programación y Producción:</span> Desarrollo lógico de mecánicas junto con la gestión del ciclo de vida del producto.</li>
-                        <li><span class="tech-label">Publicación Exitosa:</span> Despliegue y distribución oficial del videojuego en la Google App Store.</li>
+                        <li><span class="tech-label" data-i18n="unity.p6_lbl_prod"></span> <span data-i18n="unity.p6_txt_prod"></span></li>
+                        <li><span class="tech-label" data-i18n="unity.p6_lbl_pub"></span> <span data-i18n="unity.p6_txt_pub"></span></li>
                     </ul>
                 </div>
                 <div class="project-media">
                     <img src="images/anim_gif/Reel_WAPA.gif" alt="Gameplay WAPA">
                 </div>
             </div>
+
+            <!-- Showreel Completo Incorporado -->
             <div id="showreel-completo" class="project-card unity-card" style="display: block; padding: 20px;">
                 <h3 style="margin-bottom: 15px;">▶ Showreel Completo</h3>
-
                 <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 6px; background: #000;">
-                    <!-- REEMPLAZA EL LINK DE ABAJO CON TU ENLACE CONFIGURADO PARA PREVISUALIZACIÓN -->
-                    <iframe 
-                        src="https://drive.google.com/file/d/1tnkDedOoFEhHgy6rJ7gYxwjEH-JYgyBg/preview" 
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-                        allow="autoplay; encrypted-media" 
-                        allowfullscreen>
-                    </iframe>
+                    <iframe src="https://drive.google.com/file/d/1tnkDedOoFEhHgy6rJ7gYxwjEH-JYgyBg/preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
             </div>
-
-        </div>
-
-        <div id="unity-en" class="tab-content">
-            
-            <!-- SHOWREEL GENERAL -->
-            <div class="section unity-border">
-                <h2>Experiencia Core & Showreel</h2>
-                <p>Ingeniero de Software y Desarrollador con sólida experiencia en arquitectura C#, optimización multiplataforma (Mobile, WebGL) y desarrollo ágil. En el siguiente enlace puedes reproducir mi Reel consolidado con clips de mecánicas y proyectos jugables en los que he participado activamente:</p>
-                <span class="badge">Unity 2D/3D</span> <span class="badge">C#</span> <span class="badge">WebGL</span> <span class="badge">Mobile (iOS/Android)</span>
-                <br>
-                
-                <a href="#showreel-completo" class="btn">▼ Ir al Showreel</a>
-            </div>
-    
-            <h2>Proyectos en Unity</h2>
-
-            <!-- Proyecto 2: Globant Mobile Demos -->
-            <div class="project-card unity-card">
-                <div class="project-info">
-                    <h3>Modularización Core & Demos Móviles | Globant</h3>
-                    <span class="badge">Refactoring</span> <span class="badge">C#</span> <span class="badge">Mobile Prototyping</span>
-                    <p>Reestructuración de software e ingeniería de código para optimizar la escalabilidad de sistemas internos.</p>
-                    <ul>
-                        <li><span class="tech-label">Refactorización:</span> Desacoplamiento y modularización completa de un proyecto interno crítico desarrollado en C#.</li>
-                        <li><span class="tech-label">Prototipado:</span> Diseño y creación de demostraciones técnicas en Unity optimizadas para plataformas móviles.</li>
-                    </ul>
-                </div>
-                <div class="project-media">
-                    <img src="images/anim_gif/ggracing_gameplay_full1.gif" alt="Muestra de demo móvil">
-                </div>
-            </div>
-
-            
-            <div id="showreel-completo" class="project-card unity-card" style="display: block; padding: 20px;">
-                <h3 style="margin-bottom: 15px;">▶ Showreel Completo</h3>
-
-                <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 6px; background: #000;">
-                    <!-- REEMPLAZA EL LINK DE ABAJO CON TU ENLACE CONFIGURADO PARA PREVISUALIZACIÓN -->
-                    <iframe 
-                        src="https://drive.google.com/file/d/1tnkDedOoFEhHgy6rJ7gYxwjEH-JYgyBg/preview" 
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-                        allow="autoplay; encrypted-media" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-
-        </div>
-
-
+        </div> <!-- Fin del contenedor #unity -->
         <!-- ================================================================= -->
-        <!-- ======================= SECCIÓN UNREAL ========================= -->
+        <!-- APARTADO DE PROYECTOS UNREAL ENGINE                               -->
         <!-- ================================================================= -->
-        <div id="unreal-es" class="tab-content">
-            
+        <div id="unreal" class="tab-content" style="display: none;">
             <div class="section unreal-border">
-                <h2>Sistemas e Ingeniería en Unreal Engine</h2>
-                <p>Especialización técnica orientada a la extensibilidad del motor mediante código nativo y el desarrollo de sistemas robustos mediante Blueprints complejos y optimizados.</p>
+                <h2 data-i18n="unreal.main_title"></h2>
+                <p data-i18n="unreal.main_desc"></p>
                 <span class="badge">UE5</span> <span class="badge">C++ Nativo</span> <span class="badge">Plugins</span> <span class="badge">Blueprints Avanzados</span>
             </div>
 
-            <h2>Desglose de Hitos Técnicos (Prototipo Piloto)</h2>
-
-            <!-- Hito Unreal 1: Plugins -->
             <div class="project-card unreal-card">
                 <div class="project-info">
-                    <h3>Desarrollo de Plugins de Motor (Globant)</h3>
+                    <h3 data-i18n="unreal.u1_title"></h3>
                     <span class="badge">UE5</span> <span class="badge">C++ Nativo</span> <span class="badge">Engine Extensibility</span>
-                    <p>Creación de herramientas modulares internas para optimizar los flujos de producción en equipos de desarrollo en Globant.</p>
+                    <p data-i18n="unreal.u1_desc"></p>
                     <ul>
-                        <li><span class="tech-highlight">El Desafío:</span> Extender las capacidades del editor o de runtime de Unreal Engine 5 mediante código desacoplado y reutilizable en diferentes proyectos.</li>
-                        <li><span class="tech-highlight">Implementación:</span> Programación nativa de un plugin en C++ integrado directamente en la arquitectura del ciclo de vida de Unreal.</li>
+                        <li><span class="tech-highlight" data-i18n="unreal.u1_lbl_challenge"></span> <span data-i18n="unreal.u1_txt_challenge"></span></li>
+                        <li><span class="tech-highlight" data-i18n="unreal.u1_lbl_impl"></span> <span data-i18n="unreal.u1_txt_impl"></span></li>
                     </ul>
                 </div>
                 <div class="project-media">
-                    <img src="imagenes/unreal_plugin.gif" alt="Muestra de código o integración de Plugin C++">
+                    <img src="imagenes/unreal_plugin.gif" alt="Muestra de Plugin C++">
                 </div>
             </div>
 
-            <!-- Hito Unreal 2: Arquitectura -->
             <div class="project-card unreal-card">
                 <div class="project-info">
-                    <h3>Arquitectura de Sistemas (Prototipo Piloto)</h3>
+                    <h3 data-i18n="unreal.u2_title"></h3>
                     <span class="badge">UE5</span> <span class="badge">Blueprints de Sistemas</span> <span class="badge">Event Driven</span>
-                    <p>Desarrollo de mecánicas complejas enfocadas en escalabilidad y en evitar problemas comunes de rendimiento en Unreal Engine.</p>
+                    <p data-i18n="unreal.u2_desc"></p>
                     <ul>
-                        <li><span class="tech-highlight">Interconexión Modular:</span> Uso de Interfaces y Event Dispatchers para asegurar una comunicación limpia entre actores, eliminando las dependencias duras (*Hard References*) que saturan la memoria.</li>
-                        <li><span class="tech-highlight">Estructura del Gameplay:</span> Implementación estructurada de lógicas de mecánicas basadas en componentes lógicos reutilizables (*Actor Components*).</li>
+                        <li><span class="tech-highlight" data-i18n="unreal.u2_lbl_modular"></span> <span data-i18n="unreal.u2_txt_modular"></span></li>
+                        <li><span class="tech-highlight" data-i18n="unreal.u2_lbl_gameplay"></span> <span data-i18n="unreal.u2_txt_gameplay"></span></li>
                     </ul>
                 </div>
                 <div class="project-media">
-                    <img src="imagenes/unreal_gameplay.gif" alt="Muestra de Blueprints o Gameplay Técnico en UE5">
+                    <img src="images/anim_gif/ggracing_gameplay_full1.gif" alt="Muestra de Gameplay Técnico">
                 </div>
             </div>
         </div>
-
-        <div id="unreal-en" class="tab-content">
-            
-            <div class="section unreal-border">
-                <h2>Sistemas e Ingeniería en Unreal Engine</h2>
-                <p>Especialización técnica orientada a la extensibilidad del motor mediante código nativo y el desarrollo de sistemas robustos mediante Blueprints complejos y optimizados.</p>
-                <span class="badge">UE5</span> <span class="badge">C++ Nativo</span> <span class="badge">Plugins</span> <span class="badge">Blueprints Avanzados</span>
-            </div>
-
-            <h2>Desglose de Hitos Técnicos (Prototipo Piloto)</h2>
-
-            <!-- Hito Unreal 1: Plugins -->
-            <div class="project-card unreal-card">
-                <div class="project-info">
-                    <h3>Desarrollo de Plugins de Motor (Globant)</h3>
-                    <span class="badge">UE5</span> <span class="badge">C++ Nativo</span> <span class="badge">Engine Extensibility</span>
-                    <p>Creación de herramientas modulares internas para optimizar los flujos de producción en equipos de desarrollo en Globant.</p>
-                    <ul>
-                        <li><span class="tech-highlight">El Desafío:</span> Extender las capacidades del editor o de runtime de Unreal Engine 5 mediante código desacoplado y reutilizable en diferentes proyectos.</li>
-                        <li><span class="tech-highlight">Implementación:</span> Programación nativa de un plugin en C++ integrado directamente en la arquitectura del ciclo de vida de Unreal.</li>
-                    </ul>
-                </div>
-                <div class="project-media">
-                    <img src="imagenes/unreal_plugin.gif" alt="Muestra de código o integración de Plugin C++">
-                </div>
-            </div>
-        </div>
-
     </div> <!-- Fin .container -->
 
-
-    <!-- SCRIPT CONTROLADOR DE IDIOMAS Y PESTAÑAS (JSON ENGINE) -->
+    <!-- SCRIPT CONTROLADOR AUTOMÁTICO DE IDIOMAS -->
     <script>
-        let textos = {}; // Contenedor vacío donde guardaremos el JSON cargado
-        let currentLang = 'es'; // Idioma por defecto al entrar a la web
+        let textos = {}; 
+        let currentLang = 'en'; 
 
-        // 1. CARGA DINÁMICA DEL ARCHIVO JSON
-        // Fetch busca el archivo 'idiomas.json' en tu servidor/repositorio de GitHub Pages
+        // CORREGIDO: Apuesta estrictamente a la ruta interna de tu carpeta json/conten.json
         fetch('content/content.json')
             .then(response => response.json())
             .then(data => {
-                textos = data; // Guarda los datos del JSON en nuestra variable global
-                traducirPagina(); // Ejecuta la traducción por primera vez al cargar la web
+                textos = data; 
+                traducirPagina(); 
             })
-            .catch(error => console.error("Error crítico cargando el archivo de idiomas JSON:", error));
+            .catch(error => console.error("Error cargando el archivo de idiomas JSON:", error));
 
-        // 2. MOTOR DE TRADUCCIÓN AUTOMÁTICA
-        function traducirPagina() {
-            // Si el JSON falló o no tiene el idioma seleccionado, aborta para no romper la web
+         function traducirPagina() {
             if (!textos[currentLang]) return;
             
-            // Busca absolutamente todos los elementos en el HTML que tengan el atributo 'data-i18n'
             const elementos = document.querySelectorAll('[data-i18n]');
             elementos.forEach(el => {
-                const clave = el.getAttribute('data-i18n'); // Obtiene el nombre de la llave (Ej: "nav_unity")
-                // Si la llave existe dentro del idioma actual en el JSON, inyecta su texto en el HTML
-                if (textos[currentLang][clave]) {
-                    el.innerHTML = textos[currentLang][clave];
+                const path = el.getAttribute('data-i18n'); // Ejemplo: "unity.p1_sub1"
+                const partes = path.split('.'); // Lo divide en ["unity", "p1_sub1"]
+                
+                // Si la estructura tiene la pestaña y la llave correspondientes
+                if (partes.length === 2) {
+                    const seccion = partes[0]; // "unity"
+                    const llave = partes[1];   // "p1_sub1"
+                    
+                    // Valida que el bloque exista en el JSON antes de inyectar
+                    if (textos[currentLang][seccion] && textos[currentLang][seccion][llave] !== undefined) {
+                        el.innerHTML = textos[currentLang][seccion][llave];
+                    }
                 }
             });
         }
 
-        // 3. CAMBIO DE IDIOMA (Botones ESP / ENG de la cabecera)
         function changeLanguage(langId, buttonElement) {
-            currentLang = langId; // Cambia el estado del idioma (pasa de 'es' a 'en' o viceversa)
-            traducirPagina(); // Re-inyecta todos los textos de la página instantáneamente
+            currentLang = langId; 
+            traducirPagina(); 
             
-            // --- Control visual de los botones de idioma ---
             const buttons = document.querySelectorAll('.lang-btn');
-            buttons.forEach(btn => btn.classList.remove('active')); // Apaga ambos botones
-            if (buttonElement) buttonElement.classList.add('active'); // Enciende el que presionó el usuario
-
-            // --- Control visual del subtítulo del Header ---
-            // Como tu cabecera tiene dos diseños estructurales distintos por idioma, los alternamos aquí
-            const headerEs = document.getElementById('header-es');
-            const headerEn = document.getElementById('header-en');
-            if (langId === 'es') {
-                headerEs.style.display = 'block';
-                headerEn.style.display = 'none';
-            } else {
-                headerEs.style.display = 'none';
-                headerEn.style.display = 'block';
-            }
+            buttons.forEach(btn => btn.classList.remove('active')); 
+            if (buttonElement) buttonElement.classList.add('active'); 
         }
 
-        // 4. CONTROL DE PESTAÑAS (Unity / Unreal)
-        // Mantiene intacto tu parámetro 'this' (buttonElement) para no alterar tus botones del HTML
         function switchTab(techId, buttonElement) {
-            // Oculta las pestañas principales de contenido básico
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => {
-                // Evitamos ocultar los subtítulos del header por error chequeando sus IDs
-                if (content.id !== 'header-es' && content.id !== 'header-en') {
-                    content.style.display = 'none';
-                }
+                content.style.display = 'none';
             });
             
-            // Muestra la pestaña de tecnología plana solicitada (id="unity" o id="unreal")
             const activeTarget = document.getElementById(techId);
             if (activeTarget) activeTarget.style.display = 'block';
 
-            // --- Control de iluminación Verde / Azul ---
             const unityBtn = document.querySelector('.unity-tab');
             const unrealBtn = document.querySelector('.unreal-tab');
             unityBtn.classList.remove('active');
