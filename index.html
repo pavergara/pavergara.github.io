@@ -16,43 +16,43 @@
     <div class="container">
         <header>
             <h1>Patricio Alejandro Vergara Ortiz</h1>
+            
             <!-- SELECTOR DE IDIOMA -->
             <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 10px;">
                 <button class="lang-btn active" onclick="changeLanguage('es', this)" style="background: #2a2a2a; color: #fff; border: 1px solid #444; padding: 6px 12px; border-radius: 4px; cursor: pointer;">ESP</button>
                 <button class="lang-btn" onclick="changeLanguage('en', this)" style="background: #2a2a2a; color: #fff; border: 1px solid #444; padding: 6px 12px; border-radius: 4px; cursor: pointer;">ENG</button>
             </div>
-            <div id="header-es" class="tab-content active">
-                <p style="font-size: 1.2em; margin: 5px 0 0 0; color: #bbb;">Ingeniero Civil en Informática | Game Developer Ssr</p>
+            
+            <!-- Una sola etiqueta que cambia de texto dinámicamente con el JSON -->
+            <div>
+                <p style="font-size: 1.2em; margin: 5px 0 0 0; color: #bbb;" data-i18n="header_role"></p>
             </div>
-            <div id="header-en" class="tab-content">
-                <p style="font-size: 1.2em; margin: 5px 0 0 0; color: #bbb;">Computer Engineer | Game Developer</p>
-            </div>
+            
             <div class="contact-info">
                 pato.vergara@gmail.com <span>|</span> +569 97740970 <span>|</span> Santiago, Chile
             </div>
         </header>
 
         <div class="tabs-container">
-            <button class="tab-btn active unity-tab" onclick="switchTab('unity', this)">Unity</button>
-            <button class="tab-btn unreal-tab" onclick="switchTab('unreal', this)">Unreal Engine</button>
+            <button class="tab-btn active unity-tab" onclick="switchTab('unity', this)" data-i18n="nav_unity"></button>
+            <button class="tab-btn unreal-tab" onclick="switchTab('unreal', this)" data-i18n="nav_unreal"></button>
         </div>
 
         <!-- ================================================================= -->
         <!-- ======================= SECCIÓN UNITY ========================== -->
         <!-- ================================================================= -->
-        <div id="unity-es" class="tab-content active">
+        <div id="unity" class="tab-content active">
             
             <!-- SHOWREEL GENERAL -->
             <div class="section unity-border">
-                <h2>Experiencia Core & Showreel</h2>
-                <p>Ingeniero de Software y Desarrollador con sólida experiencia en arquitectura C#, optimización multiplataforma (Mobile, WebGL) y desarrollo ágil. En el siguiente enlace puedes reproducir mi Reel consolidado con clips de mecánicas y proyectos jugables en los que he participado activamente:</p>
+                <h2 data-i18n="unity_reel_title"></h2>
+                <p data-i18n="unity_reel_desc"></p>
                 <span class="badge">Unity 2D/3D</span> <span class="badge">C#</span> <span class="badge">WebGL</span> <span class="badge">Mobile (iOS/Android)</span>
                 <br>
-                
-                <a href="#showreel-completo" class="btn">▼ Ir al Showreel</a>
+                <a href="#showreel-completo" class="btn" data-i18n="unity_reel_btn"></a>
             </div>
     
-            <h2>Proyectos en Unity</h2>
+            <h2 data-i18n="nav_unity"></h2> <!-- Título de sección dinámico -->
 
             <!-- Proyecto 2: Globant Mobile Demos -->
             <div class="project-card unity-card">
@@ -303,104 +303,85 @@
     </div> <!-- Fin .container -->
 
 
-    <!-- SCRIPT LOGICA DE INTERCAMBIO DE PESTAÑAS -->
+    <!-- SCRIPT CONTROLADOR DE IDIOMAS Y PESTAÑAS (JSON ENGINE) -->
     <script>
-        /*function switchTab(tabId, buttonElement) {
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-            
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            
-            document.getElementById(tabId).classList.add('active');
-            buttonElement.classList.add('active');
-        }*/
+        let textos = {}; // Contenedor vacío donde guardaremos el JSON cargado
+        let currentLang = 'es'; // Idioma por defecto al entrar a la web
 
-        // Variables globales para recordar la selección del usuario
-        /*let currentLang = 'es';
-        let currentTech = 'unity';
+        // 1. CARGA DINÁMICA DEL ARCHIVO JSON
+        // Fetch busca el archivo 'idiomas.json' en tu servidor/repositorio de GitHub Pages
+        fetch('content/content.json')
+            .then(response => response.json())
+            .then(data => {
+                textos = data; // Guarda los datos del JSON en nuestra variable global
+                traducirPagina(); // Ejecuta la traducción por primera vez al cargar la web
+            })
+            .catch(error => console.error("Error crítico cargando el archivo de idiomas JSON:", error));
 
-        function switchTab(techId, buttonElement) {
-            currentTech = techId;
-            updateVisibility();
+        // 2. MOTOR DE TRADUCCIÓN AUTOMÁTICA
+        function traducirPagina() {
+            // Si el JSON falló o no tiene el idioma seleccionado, aborta para no romper la web
+            if (!textos[currentLang]) return;
             
-            // Control visual de los botones de tecnología
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            if(buttonElement) buttonElement.classList.add('active');
+            // Busca absolutamente todos los elementos en el HTML que tengan el atributo 'data-i18n'
+            const elementos = document.querySelectorAll('[data-i18n]');
+            elementos.forEach(el => {
+                const clave = el.getAttribute('data-i18n'); // Obtiene el nombre de la llave (Ej: "nav_unity")
+                // Si la llave existe dentro del idioma actual en el JSON, inyecta su texto en el HTML
+                if (textos[currentLang][clave]) {
+                    el.innerHTML = textos[currentLang][clave];
+                }
+            });
         }
 
+        // 3. CAMBIO DE IDIOMA (Botones ESP / ENG de la cabecera)
         function changeLanguage(langId, buttonElement) {
-            currentLang = langId;
-            updateVisibility();
+            currentLang = langId; // Cambia el estado del idioma (pasa de 'es' a 'en' o viceversa)
+            traducirPagina(); // Re-inyecta todos los textos de la página instantáneamente
             
-            // Control visual de los botones de idioma
+            // --- Control visual de los botones de idioma ---
             const buttons = document.querySelectorAll('.lang-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            buttonElement.classList.add('active');
+            buttons.forEach(btn => btn.classList.remove('active')); // Apaga ambos botones
+            if (buttonElement) buttonElement.classList.add('active'); // Enciende el que presionó el usuario
+
+            // --- Control visual del subtítulo del Header ---
+            // Como tu cabecera tiene dos diseños estructurales distintos por idioma, los alternamos aquí
+            const headerEs = document.getElementById('header-es');
+            const headerEn = document.getElementById('header-en');
+            if (langId === 'es') {
+                headerEs.style.display = 'block';
+                headerEn.style.display = 'none';
+            } else {
+                headerEs.style.display = 'none';
+                headerEn.style.display = 'block';
+            }
         }
 
-        function updateVisibility() {
-            // Ocultar absolutamente todos los bloques de contenido
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.style.display = 'none');
-            
-            // Mostrar solo el bloque que coincide con el ID combinado (Ej: #unity-es o #unreal-en)
-            const activeTarget = document.getElementById(`${currentTech}-${currentLang}`);
-            if(activeTarget) {
-                activeTarget.style.display = 'block';
-            }
-        }*/
-       // Variables globales para recordar qué pestaña y qué idioma están activos
-        let currentLang = 'es';
-        let currentTech = 'unity';
-
+        // 4. CONTROL DE PESTAÑAS (Unity / Unreal)
+        // Mantiene intacto tu parámetro 'this' (buttonElement) para no alterar tus botones del HTML
         function switchTab(techId, buttonElement) {
-            currentTech = techId;
-            updateVisibility();
+            // Oculta las pestañas principales de contenido básico
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                // Evitamos ocultar los subtítulos del header por error chequeando sus IDs
+                if (content.id !== 'header-es' && content.id !== 'header-en') {
+                    content.style.display = 'none';
+                }
+            });
             
-            // Apaga visualmente ambos botones de tecnología
+            // Muestra la pestaña de tecnología plana solicitada (id="unity" o id="unreal")
+            const activeTarget = document.getElementById(techId);
+            if (activeTarget) activeTarget.style.display = 'block';
+
+            // --- Control de iluminación Verde / Azul ---
             const unityBtn = document.querySelector('.unity-tab');
             const unrealBtn = document.querySelector('.unreal-tab');
             unityBtn.classList.remove('active');
             unrealBtn.classList.remove('active');
             
-            // Enciende el botón correcto (usa la clase que ya tenías en tu CSS)
-            if (techId === 'unity') {
-                unityBtn.classList.add('active');
-            } else if (techId === 'unreal') {
-                unrealBtn.classList.add('active');
-            }
+            if (techId === 'unity') unityBtn.classList.add('active');
+            if (techId === 'unreal') unrealBtn.classList.add('active');
         }
-
-        function changeLanguage(langId, buttonElement) {
-            currentLang = langId;
-            updateVisibility();
-            
-            // Control visual de los botones de idioma (ESP / ENG)
-            const buttons = document.querySelectorAll('.lang-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            if (buttonElement) buttonElement.classList.add('active');
-        }
-
-        function updateVisibility() {
-            // Oculta absolutamente todos los bloques de contenido de la página
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.style.display = 'none');
-            
-            // Muestra exclusivamente el bloque que el usuario quiere ver (ej: unity-es)
-            const activeTarget = document.getElementById(`${currentTech}-${currentLang}`);
-            if (activeTarget) {
-                activeTarget.style.display = 'block';
-            }
-
-            // Muestra exclusivamente el bloque que el usuario quiere ver (ej: header-es)
-            const activeTarget1 = document.getElementById(`header-${currentLang}`);
-            if (activeTarget1) {
-                activeTarget1.style.display = 'block';
-            }
-        }
-
     </script>
 </body>
 </html>
