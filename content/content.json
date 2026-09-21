@@ -73,6 +73,7 @@
       "u1_lbl_impl": "Implementation:",
       "u1_txt_impl": "Native C++ library programming, compiled for Mac and Windows environments (.a and .lib), featuring open, low-level functionalities to be defined by the end user.",
       "u1_txt2_impl": "Integration of the library into a console application and, via a plugin, into an Unreal Engine mockup.",
+      "u1_txt_desc_gif": "This demonstrates how integrating the library into a native C++ application and into Unreal Engine is similar, yet allows for variations—such as the use of external libraries (e.g., Curlhttp in the application) or environment-specific implementations in the case of Unreal Engine.",
       "u2_title": "Systems Architecture (Pilot Prototype)",
       "u2_desc": "Development of complex mechanics focused on scalability and preventing common performance issues in Unreal Engine.",
       "u2_lbl_modular": "Modular Interconnection:"
@@ -116,8 +117,8 @@
       "p2_lbl_web3": "Integración de Sistemas:",
       "p2_txt_web3": "Ingeniería de software dedicada a la estabilidad de las lógicas de juego y la implementación del flujo de personalización in-game mediante avatares basados en NFT.",
       "p2_txt_desc_gif": "Reign of Titans es un juego de cartas y combate desarrollado para AB InBev, que presenta batallas multijugador en tiempo real entre titanes y mazos de cartas. Se lanzó originalmente como una aplicación WebGL y posteriormente se migró a una aplicación móvil para Android e iOS.",
-      "p3_company": "Título Internacional Multiplataforma | Giant Monkey Robot (Globant)",
-      "p3_desc": "Desarrollo senior enfocado en la solidez del cliente móvil y el mantenimiento de entornos globales distribuidos en tiendas.",
+      "p3_company": "NBA Clash | Giant Monkey Robot (Globant)",
+      "p3_desc": "Desarrollo enfocado en la solidez del cliente móvil y el mantenimiento de entornos globales distribuidos en tiendas.",
       "p3_lbl_eng": "Ingeniería Móvil:",
       "p3_txt_eng": "Programación lógica en .NET C# y Unity para un videojuego internacional publicado en Android e iOS.",
       "p3_lbl_ops": "Despliegue y Soporte:",
@@ -152,6 +153,7 @@
       "u1_lbl_impl": "Implementación:",
       "u1_txt_impl": "Programación nativa de una libreria en C++, compilado en entornos Mac y Windwos (.a y .lib) con funcionalidades abiertas de bajo nivel ara ser deifinidas por quien la utilice.",
       "u1_txt2_impl": "Integración de librería en la implementación  de una app de Consola y por medio de plugin en un mockup en Unreal Engine.",
+      "u1_txt_desc_gif": "Muestra de cómo la integración de la librería tanto de aplicación nativa de c++ como en Unreal Engine es similar, pero permite cambios como el uso de librerias externas (Curlhttp en aplicacion) o bien implementaciones propias del entorno, en caso de Unreal Engine.",
       "u2_title": "Arquitectura de Sistemas (Prototipo Piloto)",
       "u2_desc": "Desarrollo de mecánicas complejas enfocadas en escalabilidad y en evitar problemas comunes de rendimiento en Unreal Engine.",
       "u2_lbl_modular": "Interconexión Modular:"
