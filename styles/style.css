@@ -183,7 +183,8 @@ h3 {
     border-left: 1px solid #252525;
 }
 
-.project-media img { 
+.project-media img,
+.project-video { 
     width: 100%; 
     height: auto; 
     object-fit: scale-down; 
