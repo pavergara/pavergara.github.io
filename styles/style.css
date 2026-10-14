@@ -258,6 +258,10 @@ ul ul ul li {
     margin-top: 10px; 
     font-size: 0.95em; 
     color: #aaa; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 .contact-info span { 
     margin: 0 10px; 
@@ -296,4 +300,13 @@ ul ul ul li {
     text-align: center;
     margin: 0;
     line-height: 1.4;
+}
+
+
+intro-icon {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
