@@ -197,7 +197,7 @@
                     <img src="imagenes/unity_chercan.gif" alt="Demos Chercan Games">
                 </div>
             </div>
-        -->
+            -->
 
                 <article class="project-card unity-card">
                     <div class="project-info">
@@ -224,9 +224,56 @@
                         <!--<iframe src="https://drive.google.com/file/d/1tnkDedOoFEhHgy6rJ7gYxwjEH-JYgyBg/preview" title="Showreel" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>-->
                     </div>
                 </div>
-            </section>
-        </main>
-    </div>
+        </div>
+        <!-- ================================================================= -->
+        <!-- APARTADO DE PROYECTOS UNREAL ENGINE                               -->
+        <!-- ================================================================= -->
+        <div id="unreal" class="tab-content" > <!-- </div>style="display: none;"> -->
+            <div class="section unreal-border">
+                <h2 data-i18n="unreal.main_title"></h2>
+                <p data-i18n="unreal.main_desc"></p>
+                <span class="badge">UE5</span> <span class="badge">C++ Nativo</span> <span class="badge">Plugins</span> <span class="badge">Blueprints Avanzados</span>
+            </div>
+
+
+            <div class="project-card unreal-card">
+                <div class="project-info">
+                    <h3 data-i18n="unreal.u2_title"></h3>
+                    <span class="badge">UE5</span> <span class="badge">Blueprints de Sistemas</span> <span class="badge">Event Driven</span>
+                    <p data-i18n="unreal.u2_desc"></p>
+                    <ul>
+                        <li><span class="tech-highlight" data-i18n="unreal.u2_lbl_modular"></span> <span data-i18n="unreal.u2_txt_modular"></span></li>
+                        <li><span class="tech-highlight" data-i18n="unreal.u2_lbl_gameplay"></span> <span data-i18n="unreal.u2_txt_gameplay"></span></li>
+                    </ul>
+                </div>
+                <div class="project-media">
+                    <img src="images/anim_gif/ggracing_gameplay_full1.gif" alt="Muestra de Gameplay Técnico">
+                </div>
+            </div>
+
+            
+            <div class="project-card unreal-card">
+                <div class="project-info">
+                    <h3 data-i18n="unreal.u1_title"></h3>
+                    <span class="badge">UE5</span> <span class="badge">C++ Nativo</span> <span class="badge">Engine Extensibility</span>
+                    <p data-i18n="unreal.u1_desc"></p>
+                    <ul>
+                        <li><span class="tech-highlight" data-i18n="unreal.u1_lbl_challenge"></span> <span data-i18n="unreal.u1_txt_challenge"></span></li>
+                        <li><span class="tech-highlight" data-i18n="unreal.u1_lbl_impl"></span></li> 
+                            <ul2>
+                                <li><span data-i18n="unreal.u1_txt_impl"></span></li>
+                                <li><span data-i18n="unreal.u1_txt2_impl"></span></li>
+                            </ul2>
+                    </ul>
+                </div>
+                <div class="project-media">
+                    <img src="images/anim_gif/ue_plugin.gif" alt="Muestra de Plugin C++">
+                    <p class="media-caption" data-i18n="unreal.u1_txt_desc_gif"></p>
+                </div>
+            </div>
+            
+        </div> <!-- Fin container -->
+    
 
     <footer>
         <p class="copyright">© 2026 Patricio Vergara</p>
@@ -306,6 +353,26 @@
             });
         }, { threshold: 0.25 });
         document.querySelectorAll('video').forEach(v => videoObserver.observe(v));
+
+         function switchTab(techId, buttonElement) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            const activeTarget = document.getElementById(techId);
+            if (activeTarget) activeTarget.style.display = 'block';
+
+            const unityBtn = document.querySelector('.unity-tab');
+            const unrealBtn = document.querySelector('.unreal-tab');
+            unityBtn.classList.remove('active');
+            unrealBtn.classList.remove('active');
+            
+            if (techId === 'unity') unityBtn.classList.add('active');
+            if (techId === 'unreal') unrealBtn.classList.add('active');
+        }
+
+
     </script>
 </body>
 </html>
