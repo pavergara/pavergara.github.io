@@ -97,7 +97,20 @@
       "u1_txt_desc_gif": "This demonstrates how integrating the library into a native C++ application and into Unreal Engine is similar, yet allows for variations—such as the use of external libraries (e.g., Curlhttp in the application) or environment-specific implementations in the case of Unreal Engine.",
       "u2_title": "Systems Architecture (Pilot Prototype)",
       "u2_desc": "Development of complex mechanics focused on scalability and preventing common performance issues in Unreal Engine.",
-      "u2_lbl_modular": "Modular Interconnection:"
+      "u2_lbl_modular": "Modular Interconnection:",
+      "u3_title": "UE5 Core Systems & Gameplay Architecture",
+      "u3_desc": "A personal project built on a single codebase demonstrating robust engine subsystems in Unreal Engine 5: modular input, additive loading, spline-based navigation, and event-driven communication.",
+      "u3_lbl_1": "Custom Menus (CommonUI + C++):",
+      "u3_txt_1": "Designed a modular, cross-platform menu architecture using CommonUI for robust back-action stack management. Extended the system via C++ to handle custom key mappings (WASD menu navigation), ensuring seamless input routing without breaking player focus.",
+      "u3_lbl_2": "Additive Loading Subsystem:",
+      "u3_txt_2": "Developed a custom Game Instance Subsystem to manage heavy multi-level additive loading. Utilized the engine's movie player container to persist a feedback widget, implementing dynamic timers to mask performance spikes and prevent visual stuttering during scene transitions.",
+      "u3_lbl_3": "2.5D Spline Navigation:",
+      "u3_txt_3": "Programmed a gameplay movement pipeline constrained to a dynamic spline path, allowing smooth 2.5D character navigation through complex 3D environments.",
+      "u3_lbl_4": "Decoupled Puzzle Architecture:",
+      "u3_txt_4": "Built a highly scalable puzzle framework using UE5 Interfaces. This structure allows N independent world triggers (pressure plates, switches) to communicate layout-agnostically with a single resolver actor (e.g., locking/unlocking doors) without hard references.",
+      "u3_lbl_5": "Event-Driven Communication:",
+      "u3_txt_5": "Implemented robust event-driven communication patterns across gameplay actors using Event Dispatchers, reducing code dependency, improving performance, and keeping system triggers clean and maintainable.",
+      "u3_media_caption": "Video showcasing the described subsystems: menus, additive loading, spline navigation, and puzzles."
     }
   },
   "es": {
@@ -198,7 +211,20 @@
       "u1_txt_desc_gif": "Muestra de cómo la integración de la librería tanto de aplicación nativa de c++ como en Unreal Engine es similar, pero permite cambios como el uso de librerías externas (Curlhttp en aplicación) o bien implementaciones propias del entorno, en caso de Unreal Engine.",
       "u2_title": "Arquitectura de Sistemas (Prototipo Piloto)",
       "u2_desc": "Desarrollo de mecánicas complejas enfocadas en escalabilidad y en evitar problemas comunes de rendimiento en Unreal Engine.",
-      "u2_lbl_modular": "Interconexión Modular:"
+      "u2_lbl_modular": "Interconexión Modular:",
+      "u3_title": "Arquitectura de Sistemas Core & Gameplay en UE5",
+      "u3_desc": "Un proyecto personal construido sobre una única base de código que demuestra subsistemas robustos del motor en Unreal Engine 5: entrada modular, carga aditiva, navegación por splines y comunicación basada en eventos.",
+      "u3_lbl_1": "Menús Personalizados (CommonUI + C++):",
+      "u3_txt_1": "Diseñé una arquitectura de menús modular y multiplataforma usando CommonUI para una gestión robusta de la pila de acciones de retroceso. Extendí el sistema vía C++ para manejar mapeos de teclas personalizados (navegación de menús con WASD), asegurando una enrutación de entrada fluida sin romper el foco del jugador.",
+      "u3_lbl_2": "Subsistema de Carga Aditiva:",
+      "u3_txt_2": "Desarrollé un Game Instance Subsystem personalizado para gestionar la carga aditiva pesada de múltiples niveles. Utilicé el contenedor de movie player del motor para persistir un widget de feedback, implementando timers dinámicos para enmascarar picos de rendimiento y prevenir el stuttering visual durante las transiciones de escena.",
+      "u3_lbl_3": "Navegación 2.5D por Splines:",
+      "u3_txt_3": "Programé un pipeline de movimiento de gameplay restringido a una ruta dinámica de spline, permitiendo una navegación 2.5D fluida del personaje a través de entornos 3D complejos.",
+      "u3_lbl_4": "Arquitectura de Puzzles Desacoplada:",
+      "u3_txt_4": "Construí un framework de puzzles altamente escalable usando Interfaces de UE5. Esta estructura permite que N triggers independientes del mundo (placas de presión, interruptores) se comuniquen de forma agnóstica al layout con un único actor resolutor (ej. bloquear/desbloquear puertas) sin referencias duras.",
+      "u3_lbl_5": "Comunicación Basada en Eventos:",
+      "u3_txt_5": "Implementé patrones robustos de comunicación basada en eventos entre actores de gameplay usando Event Dispatchers, reduciendo la dependencia de código, mejorando el rendimiento y manteniendo los triggers del sistema limpios y mantenibles.",
+      "u3_media_caption": "Video mostrando los subsistemas descritos: menús, carga aditiva, navegación por splines y puzzles."
     }
   }
 }
