@@ -463,6 +463,12 @@ footer .location {
 /* ================================================================= */
 /* 10. ACORDEONES DE SISTEMAS (UNREAL / U3)                          */
 /* ================================================================= */
+.systems-section {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .systems-section h3 {
     margin-bottom: 10px;
 }
