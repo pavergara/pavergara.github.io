@@ -262,9 +262,17 @@
                                 <div class="media-carousel" data-carousel aria-roledescription="carousel">
                                     <div class="carousel-track" tabindex="0">
                                         <figure class="carousel-slide">
+                                            <span class="slide-media">
+                                                <video class="project-video" controls loop muted playsinline preload="metadata" poster="images/posters/Crtic_Reel_Sept_2026_MainMenu_poster.jpg" data-i18n-aria="unreal.u3_video_label">
+                                                    <source src="images/video/Crtic_Reel_Sept_2026_MainMenu.mp4" type="video/mp4">
+                                                </video>
+                                            </span>
+                                            <figcaption data-i18n="unreal.u3_slide_video"></figcaption>
+                                        </figure>
+                                        <figure class="carousel-slide">
                                             <button type="button" class="zoom-trigger" data-i18n-aria="unreal.u3_zoom">
                                                 <span class="slide-media">
-                                                    <img src="images/diagrams/u3_01_flow.svg" alt="Block diagram of the modular menu architecture" data-i18n-alt="unreal.u3_alt_flow_1" loading="lazy">
+                                                    <img src="images/diagrams/u3_01_flow_en.svg" alt="Block diagram of the modular menu architecture" data-i18n-src="unreal.u3_img_flow" data-i18n-alt="unreal.u3_alt_flow_1" loading="lazy">
                                                     <span class="zoom-hint" data-i18n="unreal.u3_zoom_hint"></span>
                                                 </span>
                                             </button>
@@ -273,7 +281,7 @@
                                         <figure class="carousel-slide">
                                             <button type="button" class="zoom-trigger" data-i18n-aria="unreal.u3_zoom">
                                                 <span class="slide-media">
-                                                    <img src="images/diagrams/u3_01_sequence.svg" alt="Sequence diagram of the modular menu" data-i18n-alt="unreal.u3_alt_seq_1" loading="lazy">
+                                                    <img src="images/diagrams/u3_01_sequence_en.svg" alt="Sequence diagram of the modular menu" data-i18n-src="unreal.u3_img_seq" data-i18n-alt="unreal.u3_alt_seq_1" loading="lazy">
                                                     <span class="zoom-hint" data-i18n="unreal.u3_zoom_hint"></span>
                                                 </span>
                                             </button>
@@ -426,7 +434,7 @@
     <dialog id="diagram-lightbox" class="lightbox" data-i18n-aria="unreal.u3_diagram">
         <button type="button" class="lightbox-close" data-i18n-aria="unreal.u3_zoom_close">&#10005;</button>
         <div class="lightbox-inner">
-            <img id="lightbox-img" src="images/diagrams/u3_01_flow.svg" alt="">
+            <img id="lightbox-img" src="images/diagrams/u3_01_flow_en.svg" alt="">
         </div>
     </dialog>
 
@@ -479,6 +487,10 @@
             document.querySelectorAll('[data-i18n-alt]').forEach(el => {
                 const valor = resolverTexto(el.getAttribute('data-i18n-alt'));
                 if (valor !== null) el.setAttribute('alt', valor);
+            });
+            document.querySelectorAll('[data-i18n-src]').forEach(el => {
+                const valor = resolverTexto(el.getAttribute('data-i18n-src'));
+                if (valor !== null) el.setAttribute('src', valor);
             });
         }
 
