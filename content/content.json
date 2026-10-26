@@ -6,7 +6,7 @@
       "nav_unreal": "Unreal Engine",
       "unity_reel_title": "Core Experience & Showreel",
       "unity_reel_desc": "Software Engineer and Developer with solid experience in C# architecture, cross-platform optimization (Mobile, WebGL), and agile development. Click the link below to watch my consolidated Reel featuring gameplay mechanics and project milestones I actively contributed to:",
-      "unity_reel_btn": "▼ Go to Showreel"
+      "unity_reel_btn": "▶ Go to Showreel"
     },
     "unity": {
       "p1_company": "Mobile Demo | Globant",
@@ -22,7 +22,7 @@
       "p1_lbl_compet": "Competitive Systems",
       "p1_txt_compet": "Development of the interface and local logic for the global scoring and ranking system, synchronizing player results with the online platform.",
       "p1_txt_desc_gif": "GG Racing is an internal demo designed to showcase some of the capabilities of an internal SDK. It focused on the profile, ranking, and reward systems, combined with engaging gameplay, to demonstrate the technology to potential clients.",
-      "p2_company": "Reign of Titans (TCG)",
+      "p2_company": "Reign of Titans (TCG) | Globant",
       "p2_release": "Release date: Oct 2023 (WebGL) | Jan 2025 (iOS/Android)",
       "p2_desc": "Architectural scaling of a competitive Online TCG from local MVP to production-ready WebGL and mobile deployment.",
       "p2_lbl_gameplay": "Data-Driven Balancing:",
@@ -82,7 +82,7 @@
     "unreal": {
       "main_title": "Systems and Engineering in Unreal Engine",
       "main_desc": "Technical specialization oriented toward engine extensibility via native code and robust system development through optimized, complex Blueprints.",
-      "u1_title": "Plugin Development for UE and Other Platforms (Globant)",
+      "u1_title": "Plugin Development for UE and Other Platforms | Globant",
       "u1_desc": "Creation of an internal modular tool to optimize production workflows for development teams at Globant.",
       "u1_lbl_challenge": "The Challenge:",
       "u1_txt_challenge": "Extending game capabilities at runtime in an engine-agnostic manner.",
@@ -106,6 +106,9 @@
       "u3_sys_5_title": "Event-Driven Communication",
       "u3_txt_5": "Implemented robust event-driven communication patterns across gameplay actors using Event Dispatchers, reducing code dependency, improving performance, and keeping system triggers clean and maintainable.",
       "u3_personal": "Personal Project",
+      "u3_accordion_hint": "All 5 systems are collapsed. Click any of them to see videos, diagrams and code evidence.",
+      "u3_expand": "View details",
+      "u3_collapse": "Hide",
       "u3_slide_video": "Menu navigation flow: WASD, back stack and quit popup",
       "u3_video_label": "Gameplay clip of the modular menu system",
       "u3_slide_loading_detail": "Loading screen detail: LOADING... 100% in the bottom-right",
@@ -176,7 +179,7 @@
       "nav_unreal": "Unreal Engine",
       "unity_reel_title": "Experiencia Core & Showreel",
       "unity_reel_desc": "Ingeniero de Software y Desarrollador con sólida experiencia en arquitectura C#, optimización multiplataforma (Mobile, WebGL) y desarrollo ágil. En el siguiente enlace puedes reproducir mi Reel consolidado con clips de mecánicas y proyectos jugables en los que he participado activamente:",
-      "unity_reel_btn": "▼ Ir al Showreel"
+      "unity_reel_btn": "▶ Ir al Showreel"
     },
     "unity": {
       "p1_company": "Demo Móvil | Globant",
@@ -252,7 +255,7 @@
     "unreal": {
       "main_title": "Sistemas e Ingeniería en Unreal Engine",
       "main_desc": "Especialización técnica orientada a la extensibilidad del motor mediante código nativo y el desarrollo de sistemas robustos mediante Blueprints complejos y optimizados.",
-      "u1_title": "Desarrollo de Plugin para UE y otros (Globant)",
+      "u1_title": "Desarrollo de Plugin para UE y otros | Globant",
       "u1_desc": "Creación de herramienta modular interna para optimizar los flujos de producción en equipos de desarrollo en Globant.",
       "u1_lbl_challenge": "El Desafío:",
       "u1_txt_challenge": "Extender las capacidades del juego en runtime agnóstico al engine.",
@@ -276,6 +279,9 @@
       "u3_sys_5_title": "Comunicación Basada en Eventos",
       "u3_txt_5": "Implementé patrones robustos de comunicación basada en eventos entre actores de gameplay usando Event Dispatchers, reduciendo la dependencia de código, mejorando el rendimiento y manteniendo los triggers del sistema limpios y mantenibles.",
       "u3_personal": "Proyecto Personal",
+      "u3_accordion_hint": "Los 5 sistemas están colapsados. Haz clic en cualquiera para ver videos, diagramas y código de evidencia.",
+      "u3_expand": "Ver detalles",
+      "u3_collapse": "Ocultar",
       "u3_slide_video": "Flujo de navegación del menú: WASD, back stack y popup de salida",
       "u3_video_label": "Clip de gameplay del sistema de menús modular",
       "u3_slide_loading_detail": "Detalle de la pantalla de carga: LOADING... 100% abajo a la derecha",

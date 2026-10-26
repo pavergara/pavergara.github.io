@@ -27,7 +27,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Share+Tech&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles/style.css">
 </head>
@@ -58,6 +58,7 @@
             <button class="tab-btn active unity-tab" onclick="switchTab('unity', this)" data-i18n="general.nav_unity"></button>
             <button class="tab-btn unreal-tab" onclick="switchTab('unreal', this)" data-i18n="general.nav_unreal"></button>
         </div>
+
         <!-- ================================================================= -->
         <!-- APARTADO DE PROYECTOS UNITY                                       -->
         <!-- ================================================================= -->
@@ -202,27 +203,29 @@
                 <div id="showreel-completo" class="showreel">
                     <h3>▶ Showreel Completo</h3>
                     <div class="video-embed">
-                        <!-- REEMPLAZAR: sube a YouTube (unlisted) y pega el link de embed aqui -->
                         <iframe src="https://www.youtube.com/embed/SQvaXMwjTJM" title="Showreel" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                        <!--<iframe src="https://drive.google.com/file/d/1tnkDedOoFEhHgy6rJ7gYxwjEH-JYgyBg/preview" title="Showreel" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>-->
                     </div>
                 </div>
         </div>
+
         <!-- ================================================================= -->
         <!-- APARTADO DE PROYECTOS UNREAL ENGINE                               -->
         <!-- ================================================================= -->
-        <div id="unreal" class="tab-content" > <!-- </div>style="display: none;"> -->
+        <div id="unreal" class="tab-content">
             <div class="section unreal-border">
                 <h2 data-i18n="unreal.main_title"></h2>
                 <p data-i18n="unreal.main_desc"></p>
                 <span class="badge">UE5</span> <span class="badge">C++ Nativo</span> <span class="badge">Plugins</span> <span class="badge">Blueprints Avanzados</span>
             </div>
 
+            <h2 data-i18n="general.nav_unreal"></h2>
 
             <section class="section unreal-border systems-section">
                 <h3 data-i18n="unreal.u3_title"></h3>
                 <span class="badge">UE5</span> <span class="badge">C++</span> <span class="badge">CommonUI</span> <span class="badge">Event Driven</span> <span class="badge personal" data-i18n="unreal.u3_personal"></span>
                 <p data-i18n="unreal.u3_desc"></p>
+
+                <p class="accordion-hint" data-i18n="unreal.u3_accordion_hint"></p>
 
                 <div class="systems-accordion" data-accordion>
                     <div class="accordion-item" data-sys="menu">
@@ -235,6 +238,7 @@
                                     <span class="badge">C++</span>
                                     <span class="badge">Widget Stack</span>
                                 </span>
+                                <span class="accordion-action" data-i18n="unreal.u3_expand"></span>
                                 <span class="accordion-chevron" aria-hidden="true"></span>
                             </button>
                         </h4>
@@ -293,6 +297,7 @@
                                     <span class="badge">StreamableManager</span>
                                     <span class="badge">Async Timers</span>
                                 </span>
+                                <span class="accordion-action" data-i18n="unreal.u3_expand"></span>
                                 <span class="accordion-chevron" aria-hidden="true"></span>
                             </button>
                         </h4>
@@ -364,6 +369,7 @@
                                     <span class="badge">2.5D Projection</span>
                                     <span class="badge">Tick</span>
                                 </span>
+                                <span class="accordion-action" data-i18n="unreal.u3_expand"></span>
                                 <span class="accordion-chevron" aria-hidden="true"></span>
                             </button>
                         </h4>
@@ -450,6 +456,7 @@
                                     <span class="badge">N Triggers</span>
                                     <span class="badge">No Hard Refs</span>
                                 </span>
+                                <span class="accordion-action" data-i18n="unreal.u3_expand"></span>
                                 <span class="accordion-chevron" aria-hidden="true"></span>
                             </button>
                         </h4>
@@ -533,6 +540,7 @@
                                     <span class="badge">Broadcast</span>
                                     <span class="badge">Bind</span>
                                 </span>
+                                <span class="accordion-action" data-i18n="unreal.u3_expand"></span>
                                 <span class="accordion-chevron" aria-hidden="true"></span>
                             </button>
                         </h4>
@@ -727,6 +735,14 @@
                     item.classList.toggle('open', isOpen);
                     trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
                     panel.inert = !isOpen;
+
+                    const action = trigger.querySelector('.accordion-action');
+                    if (action) {
+                        const key = isOpen ? 'unreal.u3_collapse' : 'unreal.u3_expand';
+                        const txt = resolverTexto(key);
+                        if (txt) action.textContent = txt;
+                    }
+
                     if (isOpen) {
                         panel.removeAttribute('aria-hidden');
                     } else {
@@ -890,4 +906,3 @@
     </script>
 </body>
 </html>
-
