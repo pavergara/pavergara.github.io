@@ -1,4 +1,4 @@
-/* ================================================================= */
+﻿/* ================================================================= */
 /* 0. RESET GLOBAL (fix desbordes por padding en móvil)              */
 /* ================================================================= */
 *, *::before, *::after { box-sizing: border-box; }
@@ -7,13 +7,13 @@
 /* 1. TIPOGRAFÍA Y CONFIGURACIÓN BASE DEL CUERPO                     */
 /* ================================================================= */
 body { 
-    font-family: 'Share Tech', sans-serif; 
+    font-family: 'Inter', sans-serif;       /* NUEVO: antes 'Share Tech' */
     background-color: #121212; 
     color: #e0e0e0; 
     margin: 0; 
-    padding: 20px; 
-    line-height: 1.6; 
-    font-size: 0.9em;
+    padding: 40px 20px;                     /* NUEVO: antes 20px */
+    line-height: 1.65;                      /* NUEVO: antes 1.6 */
+    font-size: 1em;                         /* NUEVO: antes 0.9em */
 }
 
 .container { 
@@ -22,11 +22,11 @@ body {
 }
 
 /* ================================================================= */
-/* 2. CONFIGURACIÓN DE ENCABEZADOS (RANGO GLOBAL DE FUENTES GAMING)  */
+/* 2. CONFIGURACIÓN DE ENCABEZADOS                                    */
 /* ================================================================= */
-header h1, h2, h3, .tab-btn { 
+/* NUEVO: Orbitron solo para H1 y tabs; H2/H3 usan Inter */
+header h1, .tab-btn { 
     font-family: 'Orbitron', sans-serif; 
-    letter-spacing: 2px;
 }
 
 header { 
@@ -35,13 +35,14 @@ header {
     background: #1e1e1e; 
     border-radius: 8px; 
     margin-bottom: 30px; 
-    border-bottom: 3px solid #00ff88; 
+    border-bottom: 1px solid #333;          /* NUEVO: antes 3px solid #8b7fd7 */
 }
 
 header h1 { 
     margin: 0; 
     color: #ffffff; 
     font-size: 2.5em; 
+    letter-spacing: 1px;                    /* NUEVO: antes 2px */
 }
 
 h2 { 
@@ -49,7 +50,9 @@ h2 {
     margin-bottom: 20px; 
     text-transform: uppercase; 
     font-size: 1.6em; 
-    letter-spacing: 1px; 
+    letter-spacing: 0;                      /* NUEVO: antes 1px */
+    font-family: 'Inter', sans-serif;       /* NUEVO */
+    font-weight: 600;                       /* NUEVO */
 }
 
 h3 { 
@@ -57,23 +60,23 @@ h3 {
     margin-top: 0; 
     color: #ffffff;
     font-size: 1.35em;
+    font-family: 'Inter', sans-serif;       /* NUEVO */
+    font-weight: 600;                       /* NUEVO */
 }
 
 /* ================================================================= */
-/* 3. COLORES POR REGIONES DE TECNOLOGÍA (CORREGIDO PARA NUEVOS IDs) */
+/* 3. COLORES POR REGIONES DE TECNOLOGÍA                             */
 /* ================================================================= */
-/* Región Unity (Títulos principales e internos en Verde) */
 #unity h2, #unity h3, #unity h4 { 
-    color: #00ff88; 
+    color: #4ade80; 
 }
 
-/* Región Unreal Engine (Títulos principales e internos en Azul) */
 #unreal h2, #unreal h3, #unreal h4 { 
     color: #3498db; 
 }
 
 /* ================================================================= */
-/* 4. CONTROLES DE NAVEGACIÓN Y COMPONENTES (BOTONES Y PESTAÑAS)      */
+/* 4. CONTROLES DE NAVEGACIÓN Y COMPONENTES                          */
 /* ================================================================= */
 .tabs-container { 
     display: flex; 
@@ -94,12 +97,13 @@ h3 {
     transition: 0.3s; 
     width: 45%; 
     max-width: 250px; 
+    letter-spacing: 0.5px;                  /* NUEVO: antes 2px vía selector agrupado */
 }
 
 .tab-btn.active.unity-tab { 
-    background: #00ff88; 
+    background: #4ade80; 
     color: #121212; 
-    box-shadow: 0 4px 12px rgba(0,255,136,0.3); 
+    box-shadow: 0 4px 12px rgba(74,222,128,0.3); 
 }
 
 .tab-btn.active.unreal-tab { 
@@ -121,15 +125,15 @@ h3 {
     padding: 25px; 
     border-radius: 8px; 
     margin-bottom: 25px; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);  /* NUEVO: antes 0 4px 6px rgba(0,0,0,0.3) */
 }
 
-.unity-border { border-left: 5px solid #00ff88; }
-.unreal-border { border-left: 5px solid #3498db; }
+.unity-border { border-left: 3px solid #4ade80; }   /* NUEVO: antes 5px */
+.unreal-border { border-left: 3px solid #3498db; }  /* NUEVO: antes 5px */
 
 .btn { 
     display: inline-block; 
-    background: #00ff88; 
+    background: #8b7fd7; 
     color: #121212; 
     padding: 12px 24px; 
     text-decoration: none; 
@@ -139,12 +143,12 @@ h3 {
     transition: 0.3s; 
 }
 .btn:hover { 
-    background: #00cc6e; 
+    background: #7a6ec4; 
     transform: translateY(-2px); 
 }
 
 /* ================================================================= */
-/* 5. ARQUITECTURA DE TARJETAS DE PROYECTOS (ESTRUCTURACIÓN TEXTO)   */
+/* 5. ARQUITECTURA DE TARJETAS DE PROYECTOS                          */
 /* ================================================================= */
 .project-card { 
     display: flex; 
@@ -152,14 +156,13 @@ h3 {
     border-radius: 8px; 
     margin-bottom: 25px; 
     overflow: hidden; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
-    border-left: 5px solid #333; 
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);  /* NUEVO */
+    border-left: 3px solid #333;              /* NUEVO: antes 5px */
 }
 
-.unity-card { border-left-color: #00ff88; }
+.unity-card { border-left-color: #4ade80; }
 .unreal-card { border-left-color: #3498db; }
 
-/* Región del Contenido Descriptivo (Izquierda) */
 .project-info { 
     flex: 1; 
     padding: 25px; 
@@ -172,16 +175,15 @@ h3 {
     margin-bottom: 15px;
 }
 
-/* Región Multimedia y Textos bajo el GIF (Derecha) */
 .project-media { 
     width: 40%; 
     max-width: 400px; 
     min-width: 270px; 
     background: #171717; 
     display: flex; 
-    flex-direction: column;   /* Manda el texto abajo del GIF */
-    align-items: center;      /* Centra horizontalmente el GIF y el texto */
-    justify-content: center;  /* Centra el bloque completo verticalmente en altura */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: relative; 
     padding: 20px;
     gap: 15px;
@@ -198,10 +200,9 @@ h3 {
     border-radius: 6px; 
 }
 
-/* Texto Descriptivo bajo el GIF (Región de Reseña de Gameplay) */
 .project-media p {
-    font-family: 'Share Tech', sans-serif;
-    font-size: 0.95em;
+    font-family: 'Inter', sans-serif;   /* NUEVO: antes 'Share Tech' */
+    font-size: 0.92em;                   /* NUEVO: antes 0.95em */
     color: #aaaaaa;
     text-align: center;
     margin: 0;
@@ -209,19 +210,25 @@ h3 {
 }
 
 /* ================================================================= */
-/* 6. LISTAS, VIÑETAS JERÁRQUICAS Y TEXTOS COMPLEMENTARIOS          */
+/* 6. LISTAS, VIÑETAS Y TEXTOS COMPLEMENTARIOS                       */
 /* ================================================================= */
 .badge { 
-    background: #2b2b2b; 
+    background: rgba(255, 255, 255, 0.07);        /* NUEVO */
     color: #e0e0e0; 
     padding: 4px 10px; 
     border-radius: 4px; 
     font-size: 0.8em; 
     font-weight: bold; 
     margin-right: 5px; 
-    border: 1px solid #444; 
+    border: 1px solid rgba(255, 255, 255, 0.1);   /* NUEVO */
     display: inline-block; 
     margin-bottom: 5px; 
+}
+
+.badge.personal { 
+    background: #8b7fd7; 
+    color: #121212; 
+    border-color: #8b7fd7; 
 }
 
 .tech-label, .tech-highlight { 
@@ -236,11 +243,10 @@ ul {
 
 li { 
     margin-bottom: 8px; 
-    color: #e0e0e0; /* 👈 Gris muy claro/Blanco * / color: #dcdcdc;*/
+    color: #e0e0e0;
     font-size: 0.98em;
 }
 
-/* Sub-viñetas anidadas automáticas */
 ul ul {
     margin-top: 6px;
     padding-left: 20px;
@@ -248,15 +254,14 @@ ul ul {
 
 ul ul li {
     font-size: 0.95em;
-     color: #c5c5c5; /* 👈 Un punto más abajo, pero totalmente nítido * /color: #b0b0b0;*/
-    list-style-type: circle; /* Viñeta secundaria vacía */
+    color: #c5c5c5;
+    list-style-type: circle;
 }
 
-/* Tercer nivel de sub-viñetas */
 ul ul ul li {
     font-size: 0.92em;
-    color: #aaaaaa; /* 👈 Un punto más abajo, legible sin difuminarse * /color: #959595;*/
-    list-style-type: square; /* Viñeta terciaria cuadrada */
+    color: #aaaaaa;
+    list-style-type: square;
 }
 
 .contact-info { 
@@ -273,8 +278,8 @@ ul ul ul li {
 }
 
 .lang-btn.active { 
-    border-color: #00ff88 !important; 
-    color: #00ff88 !important; 
+    border-color: #8b7fd7 !important; 
+    color: #8b7fd7 !important; 
 }
 
 /* ================================================================= */
@@ -283,8 +288,8 @@ ul ul ul li {
 @media (min-width: 769px) {
     .project-card:nth-child(even) { flex-direction: row-reverse; }
     .project-card:nth-child(even) { border-left-color: transparent; }
-    .unity-card:nth-child(even) { border-right: 5px solid #00ff88; }
-    .unreal-card:nth-child(even) { border-right: 5px solid #3498db; }
+    .unity-card:nth-child(even) { border-right: 3px solid #4ade80; }   /* NUEVO: antes 5px */
+    .unreal-card:nth-child(even) { border-right: 3px solid #3498db; }  /* NUEVO */
     .project-card:nth-child(even) .project-media { border-left: none; border-right: 1px solid #252525; }
 }
 
@@ -292,21 +297,19 @@ ul ul ul li {
     .project-card { flex-direction: column; }
     .project-media { width: 100%; max-width: 100%; height: auto; border-left: none; border-top: 1px solid #252525; }
     .project-card:nth-child(even) { border-right: none; }
-    .unity-card:nth-child(even) { border-left-color: #00ff88; }
+    .unity-card:nth-child(even) { border-left-color: #4ade80; }
     .unreal-card:nth-child(even) { border-left-color: #3498db; }
 }
 
-/* Estilo independiente para la leyenda técnica bajo el GIF */
 .media-caption {
-    font-family: 'Share Tech', sans-serif;
-    font-size: 0.92em;
+    font-family: 'Inter', sans-serif;   /* NUEVO: antes 'Share Tech' */
+    font-size: 0.88em;                   /* NUEVO: antes 0.92em */
     color: #999999;
-    font-style: italic; /* 👈 Aquí controlas si es itálica, bold, etc. */
+    font-style: italic;
     text-align: center;
     margin: 0;
     line-height: 1.4;
 }
-
 
 .intro-icon {
     width: 46px;
@@ -340,11 +343,11 @@ ul ul ul li {
 }
 
 .lang-btn:hover {
-    border-color: #00ff88;
+    border-color: #8b7fd7;
 }
 
 .lang-btn:focus-visible {
-    outline: 2px solid #00ff88;
+    outline: 2px solid #8b7fd7;
     outline-offset: 2px;
 }
 
@@ -361,7 +364,7 @@ ul ul ul li {
 }
 
 .contact-info a {
-    color: #00ff88;
+    color: #8b7fd7;
     text-decoration: none;
 }
 
@@ -407,14 +410,13 @@ ul ul ul li {
     font-size: 1.1em;
 }
 
-/* Foco visible global (accesibilidad) */
 a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
-    outline: 2px solid #00ff88;
+    outline: 2px solid #8b7fd7;
     outline-offset: 2px;
 }
 
 /* ================================================================= */
-/* 9. FOOTER (PIE DE PÁGINA SEMÁNTICO)                               */
+/* 9. FOOTER                                                          */
 /* ================================================================= */
 footer {
     text-align: center;
@@ -422,7 +424,7 @@ footer {
     background: #1e1e1e;
     border-radius: 8px;
     margin-top: 30px;
-    border-top: 3px solid #00ff88;
+    border-top: 1px solid #333;             /* NUEVO: antes 3px solid #8b7fd7 */
 }
 
 footer .copyright {
@@ -452,4 +454,551 @@ footer .location {
     margin: 0;
     color: #888;
     font-size: 0.9em;
+}
+
+/* ================================================================= */
+/* 10. ACORDEONES DE SISTEMAS (UNREAL / U3)                          */
+/* ================================================================= */
+.systems-section h3 {
+    margin-bottom: 10px;
+}
+
+.systems-section > p {
+    color: #cccccc;
+    font-size: 1.05em;
+    margin: 10px 0 20px;
+}
+
+/* NUEVO: pista visual arriba del acordeón */
+.accordion-hint {
+    margin: 0 0 12px;
+    padding: 10px 14px;
+    background: rgba(52, 152, 219, 0.08);
+    border-left: 3px solid #3498db;
+    border-radius: 4px;
+    color: #b0b0b0;
+    font-size: 0.92em;
+    line-height: 1.5;
+}
+
+.systems-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.accordion-item {
+    background: #171717;
+    border: 1px solid #2c2c2c;
+    border-left: 3px solid transparent;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.25s, background 0.25s;
+}
+
+.accordion-item:hover {
+    border-color: #3a3a3a;
+    border-left-color: #2f6f9e;
+}
+
+.accordion-item.open {
+    background: #1a1a1a;
+    border-left-color: #3498db;
+}
+
+.accordion-heading {
+    margin: 0;
+}
+
+.accordion-trigger {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    min-height: 58px;
+    padding: 14px 18px;
+    background: transparent;
+    border: 0;
+    color: #ffffff;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1em;
+    transition: background 0.2s;
+}
+
+.accordion-trigger:hover {
+    background: #232323;                    /* NUEVO: antes #202020 */
+}
+
+.accordion-trigger:focus-visible {
+    outline-offset: -3px;
+}
+
+.accordion-index {
+    flex-shrink: 0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+    color: #3498db;
+}
+
+.accordion-title {
+    font-family: 'Inter', sans-serif;       /* NUEVO: antes 'Orbitron' */
+    font-size: 1.05em;                       /* NUEVO: antes 1.02em */
+    font-weight: 600;                        /* NUEVO */
+    letter-spacing: 0;                       /* NUEVO: antes 1px */
+    line-height: 1.35;
+    color: #ffffff;
+}
+
+.accordion-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 5px;
+    margin-left: auto;
+}
+
+.accordion-tags .badge {
+    margin: 0;
+    padding: 3px 8px;
+    font-size: 0.72em;
+}
+
+/* NUEVO: texto de acción "Ver detalles" */
+.accordion-action {
+    flex-shrink: 0;
+    font-size: 0.78em;
+    color: #3498db;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+.accordion-item.open .accordion-action {
+    color: #8a8a8a;
+}
+.accordion-trigger:hover .accordion-action {
+    color: #5dade2;
+}
+
+/* NUEVO: chevron más visible (azul, 14px) */
+.accordion-chevron {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    margin-left: 4px;
+    border-right: 2.5px solid #3498db;
+    border-bottom: 2.5px solid #3498db;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease, border-color 0.3s;
+}
+
+.accordion-item.open .accordion-chevron {
+    transform: rotate(-135deg);
+    border-color: #8a8a8a;
+}
+
+.accordion-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+}
+
+.accordion-item.open .accordion-panel {
+    grid-template-rows: 1fr;
+}
+
+.accordion-panel-inner {
+    overflow: hidden;
+}
+
+.accordion-desc {
+    margin: 0;
+    padding: 0 22px 4px;
+    color: #cfcfcf;
+    font-size: 1.02em;
+}
+
+/* ----------------------------------------------------------------- */
+/* 10.1 Carrusel de evidencia por módulo                             */
+/* ----------------------------------------------------------------- */
+.media-carousel {
+    position: relative;
+    padding: 12px 22px 18px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    scroll-snap-align: center;
+}
+
+.zoom-trigger {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: zoom-in;
+}
+
+.slide-media {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 9;
+    background: #141414;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.slide-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    object-fit: contain;
+}
+
+.slide-media video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    background: #000000;
+    border-radius: 6px;
+    object-fit: contain;
+}
+
+.zoom-hint {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    padding: 2px 8px;
+    background: rgba(18, 18, 18, 0.85);
+    border: 1px solid #3a3a3a;
+    border-radius: 3px;
+    color: #bdbdbd;
+    font-size: 0.7em;
+    letter-spacing: 0.5px;
+    pointer-events: none;
+}
+
+.zoom-note {
+    position: static;
+    display: block;
+    margin: 2px 0 0;
+    padding: 0;
+    background: none;
+    border: 0;
+    color: #8a8a8a;
+    font-size: 0.78em;
+    letter-spacing: 0;
+    text-align: right;
+    pointer-events: none;
+}
+
+.zoom-trigger:hover .slide-media,
+.zoom-trigger:focus-visible .slide-media {
+    border-color: #3498db;
+}
+
+.carousel-slide figcaption {
+    color: #a8a8a8;
+    font-size: 0.92em;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.carousel-slide--links {
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    aspect-ratio: 16 / 9;
+    padding: 24px;
+    background: #141414;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+}
+
+.carousel-slide--links h5 {
+    margin: 0 0 6px;
+    font-family: 'Inter', sans-serif;   /* NUEVO: antes 'Orbitron' */
+    font-size: 1.05em;
+    font-weight: 600;                    /* NUEVO */
+    letter-spacing: 0;                   /* NUEVO: antes 1px */
+    color: #3498db;
+}
+
+.btn-evidence {
+    margin-top: 0;
+    padding: 10px 18px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: #e0e0e0;
+    font-size: 0.95em;
+    text-align: center;
+}
+
+.btn-evidence:hover {
+    background: #3498db;
+    border-color: #3498db;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: rgba(18, 18, 18, 0.85);
+    border: 1px solid #444;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 1.5em;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+}
+
+.carousel-btn:hover:not(:disabled) {
+    background: #3498db;
+    border-color: #3498db;
+}
+
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.carousel-btn.prev { left: 4px; }
+.carousel-btn.next { right: 4px; }
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid #555;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.carousel-dot[aria-current="true"] {
+    background: #3498db;
+    border-color: #3498db;
+}
+
+.media-carousel.single-slide .carousel-btn,
+.media-carousel.single-slide .carousel-dots {
+    display: none;
+}
+
+/* ----------------------------------------------------------------- */
+/* 10.2 Lightbox de diagramas                                        */
+/* ----------------------------------------------------------------- */
+.lightbox {
+    position: relative;
+    max-width: 96vw;
+    max-height: 96vh;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+.lightbox::backdrop {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 92vw;
+    height: 84vh;
+    padding: 12px;
+    overflow: auto;
+    background: #141414;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.lightbox-inner img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: rgba(18, 18, 18, 0.9);
+    border: 1px solid #444;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 1.05em;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.lightbox-close:hover {
+    background: #3498db;
+    border-color: #3498db;
+}
+
+/* ----------------------------------------------------------------- */
+/* 10.3 Responsive y accesibilidad del acordeón                      */
+/* ----------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .accordion-trigger {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas:
+            "index title chevron"
+            "tags tags tags"
+            "action action action";      /* NUEVO: fila para texto de acción */
+        column-gap: 12px;
+        row-gap: 8px;
+        padding: 12px 14px;
+    }
+
+    .accordion-index { grid-area: index; }
+    .accordion-title { grid-area: title; }
+    .accordion-chevron { grid-area: chevron; margin-left: 0; }
+    .accordion-tags {
+        grid-area: tags;
+        margin-left: 0;
+        justify-content: flex-start;
+    }
+    /* NUEVO: texto de acción en su propia fila, alineado a la derecha */
+    .accordion-action {
+        grid-area: action;
+        text-align: right;
+        font-size: 0.75em;
+    }
+
+    .accordion-desc { padding: 0 14px 4px; }
+    .media-carousel { padding: 10px 14px 16px; }
+    .carousel-btn { width: 38px; height: 38px; font-size: 1.2em; }
+    .carousel-btn.prev { left: 0; }
+    .carousel-btn.next { right: 0; }
+    .carousel-slide--links { padding: 16px; gap: 8px; }
+
+    .lightbox-inner {
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 94vw;
+        height: 86vh;
+        padding: 8px;
+    }
+
+    .lightbox-inner img {
+        width: auto;
+        height: auto;
+        min-width: 1000px;
+        max-width: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .accordion-panel,
+    .accordion-chevron,
+    .accordion-item,
+    .carousel-btn,
+    .carousel-dot,
+    .slide-media,
+    .accordion-action {
+        transition: none;
+    }
+
+/* ================================================================= */
+/* 11. UNIFICACIÓN VISUAL ENTRE UNITY Y UNREAL                       */
+/* ================================================================= */
+
+/* 1. El Título "UNREAL ENGINE" con el mismo margen que el de Unity */
+#unreal h2[data-i18n="general.nav_unreal"] {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+}
+
+/* 2. Tarjeta de Introducción de Unreal (Igualar al Showreel de Unity) */
+.section.unreal-border {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-left: 5px solid #3498db;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+/* 3. Contenedor del Acordeón (Igualar al peso visual de las tarjetas de Unity) */
+.systems-section {
+    background: #1e1e1e;
+    border-left: 5px solid #3498db;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+/* 4. Asegurar que el acordeón respire bien dentro de su sección */
+.systems-section .systems-accordion {
+    margin-top: 20px;
+}
+
+/* 5. Tarjeta del Plugin de Globant (Igualar borde y sombra) */
+#unreal .project-card.unreal-card {
+    border-left: 5px solid #3498db;
+    background: #1e1e1e;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    border-radius: 8px;
+}
 }

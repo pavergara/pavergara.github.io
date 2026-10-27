@@ -1,0 +1,6 @@
+# Referencias locales (capturas de chats / búsquedas) fuera del sitio publicado
+ref_gemini/
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
