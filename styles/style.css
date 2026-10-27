@@ -956,6 +956,7 @@ footer .location {
     .accordion-action {
         transition: none;
     }
+}
 
 /* ================================================================= */
 /* 11. UNIFICACIÓN VISUAL ENTRE UNITY Y UNREAL                       */
@@ -1001,4 +1002,79 @@ footer .location {
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     border-radius: 8px;
 }
+
+/* ================================================================= */
+/* 12. STACK DE TARJETAS DE PROYECTO (CSS3 + VANILLA JS)             */
+/* ================================================================= */
+/* El JS asigna a cada .project-card un --stack-z propio y un        */
+/* --stack-offset creciente. Con position: sticky cada tarjeta se    */
+/* superpone a la anterior al hacer scroll; --stack-scale (medido en */
+/* scroll) encoge la tarjeta que queda debajo para dar profundidad.  */
+/* Sin JS las tarjetas se ven igual que antes.                       */
+.project-stack {
+    position: relative;
 }
+
+/* Cada tarjeta es su propio contexto de apilado: el z-index que asigna el
+   JS hace que la siguiente siempre tape a la anterior, se apile con sticky
+   (pantallas altas) o pase por encima en flujo normal (pantallas bajas). */
+.project-card.is-stack-item {
+    position: relative;
+    z-index: var(--stack-z, 1);
+}
+
+@media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
+    .project-card.is-stacked {
+        position: sticky;
+        top: calc(var(--stack-top, 90px) + var(--stack-offset, 0px));
+        z-index: var(--stack-z, 1);
+        transform: scale(var(--stack-scale, 1));
+        transform-origin: 50% 0;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+        backface-visibility: hidden;
+        will-change: transform;
+    }
+}
+
+/* ================================================================= */
+/* 13. ZOOM SUTIL DE IMÁGENES AL PASAR EL MOUSE                      */
+/* ================================================================= */
+/* transform: scale() no altera el flujo del documento: el ancho y el */
+/* alto (width/height) de la imagen se mantienen, por lo que la       */
+/* diagramación no se mueve. Los contenedores con overflow: hidden    */
+/* (.project-card, .slide-media) recortan el desborde del zoom.       */
+/* Las miniaturas de las tarjetas de Unity son <video> con poster:    */
+/* se incluyen para que el efecto también se vea ahí.                 */
+img,
+.project-video {
+    transition: transform 0.5s ease;
+}
+
+img:hover,
+.project-video:hover {
+    transform: scale(1.04);
+}
+
+/* La imagen del lightbox vive en un contenedor con overflow: auto:   */
+/* ampliarla haría aparecer barras de scroll al pasar el mouse.       */
+.lightbox-inner img {
+    transition: none;
+}
+
+.lightbox-inner img:hover {
+    transform: none;
+}
+
+/* Accesibilidad: sin animación ni zoom si el usuario pidió menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    img,
+    .project-video {
+        transition: none;
+    }
+
+    img:hover,
+    .project-video:hover {
+        transform: none;
+    }
+}
+

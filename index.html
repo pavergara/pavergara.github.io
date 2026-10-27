@@ -74,6 +74,8 @@
     
             <h2 data-i18n="general.nav_unity"></h2>
 
+            <!-- Stack: cada tarjeta se apila sobre la anterior al hacer scroll -->
+            <div class="project-stack">
                 <article class="project-card unity-card">
                     <div class="project-info">
                         <h3 data-i18n="unity.p1_company"></h3>
@@ -199,6 +201,7 @@
                         </video>
                     </div>
                 </article>
+            </div> <!-- Fin stack de tarjetas -->
 
                 <div id="showreel-completo" class="showreel">
                     <h3>▶ Showreel Completo</h3>
@@ -719,6 +722,9 @@
             
             if (techId === 'unity') unityBtn.classList.add('active');
             if (techId === 'unreal') unrealBtn.classList.add('active');
+
+            // Recalcula el stack de tarjetas del panel que ahora es visible
+            document.dispatchEvent(new CustomEvent('tabchange', { detail: { techId } }));
         }
 
         /* ============================================================= */
@@ -893,10 +899,117 @@
             });
         }
 
+        /* ============================================================= */
+        /* Tarjetas de proyecto apiladas: z-index propio + scroll        */
+        /* ============================================================= */
+        function initProjectCardStack() {
+            const cards = Array.from(document.querySelectorAll('.project-card'));
+            if (cards.length === 0) return;
+
+            const desktopQuery = window.matchMedia('(min-width: 769px)');
+            const motionQuery = window.matchMedia('(prefers-reduced-motion: no-preference)');
+            const STACK_GAP = 12;       // px entre el borde de una tarjeta y la siguiente
+            const MIN_TOP = 16;         // separacion minima respecto al borde superior
+            const MAX_TOP = 120;        // separacion maxima respecto al borde superior
+            const SCALE_DEPTH = 0.06;   // cuanto se encoge la tarjeta que queda debajo
+
+            // Agrupa las tarjetas por panel (Unity / Unreal) para que cada stack
+            // tenga su propia separacion vertical. El z-index es unico y global.
+            const panels = new Map();
+            cards.forEach(card => {
+                const panel = card.closest('.tab-content') || card.parentElement;
+                if (!panel) return;
+                if (!panels.has(panel)) panels.set(panel, []);
+                panels.get(panel).push(card);
+            });
+
+            const stackedCards = [];
+            let zIndex = 1;
+            panels.forEach(panelCards => {
+                panelCards.forEach((card, index) => {
+                    card.classList.add('is-stack-item');
+                    card.style.setProperty('--stack-z', String(zIndex));
+                    card.style.setProperty('--stack-offset', (index * STACK_GAP) + 'px');
+                    stackedCards.push({ card, index, next: panelCards[index + 1] || null });
+                    zIndex += 1;
+                });
+            });
+
+            let frame = null;
+
+            // Solo se apila el panel completo si TODAS sus tarjetas caben en el
+            // alto visible: una tarjeta mas alta que la ventana dejaria su final
+            // fuera de pantalla mientras esta pegada. Si no caben, se conserva
+            // el flujo normal para no mostrar recortes.
+            function measure() {
+                const height = window.innerHeight;
+                const preferred = Math.min(MAX_TOP, Math.max(72, Math.round(height * 0.1)));
+
+                panels.forEach((panelCards, panel) => {
+                    let top = Infinity;
+
+                    panelCards.forEach((card, index) => {
+                        if (card.offsetHeight === 0) return;    // panel oculto
+                        top = Math.min(top, height - card.offsetHeight - index * STACK_GAP);
+                    });
+
+                    if (top === Infinity) return;               // nada visible que medir
+
+                    const fits = top >= MIN_TOP;
+                    panel.style.setProperty('--stack-top',
+                        Math.max(MIN_TOP, Math.min(preferred, Math.round(top))) + 'px');
+                    panelCards.forEach(card => card.classList.toggle('is-stacked', fits));
+                });
+
+                update();
+            }
+
+            // A medida que la siguiente tarjeta sube y tapa a la anterior, la
+            // anterior se encoge para dar sensacion de profundidad.
+            function update() {
+                frame = null;
+                if (!desktopQuery.matches || !motionQuery.matches) return;
+
+                stackedCards.forEach(({ card, next }) => {
+                    if (!card.classList.contains('is-stacked') || card.offsetParent === null) return;
+
+                    let progress = 0;
+                    if (next && next.offsetParent !== null) {
+                        const cardRect = card.getBoundingClientRect();
+                        const covered = cardRect.top + card.offsetHeight - next.getBoundingClientRect().top;
+                        progress = Math.max(0, Math.min(1, covered / card.offsetHeight));
+                    }
+
+                    card.style.setProperty('--stack-scale', (1 - SCALE_DEPTH * progress).toFixed(3));
+                });
+            }
+
+            function schedule() {
+                if (frame !== null) return;
+                frame = requestAnimationFrame(update);
+            }
+
+            window.addEventListener('scroll', schedule, { passive: true });
+            window.addEventListener('resize', measure);
+            document.addEventListener('tabchange', measure);
+            desktopQuery.addEventListener('change', measure);
+            motionQuery.addEventListener('change', measure);
+
+            // Los textos llegan del JSON y los videos/imagenes cambian el alto:
+            // se vuelve a medir cuando una tarjeta cambia de tamano.
+            if ('ResizeObserver' in window) {
+                const resizeObserver = new ResizeObserver(measure);
+                cards.forEach(card => resizeObserver.observe(card));
+            }
+
+            measure();
+        }
+
         initSystemsAccordion();
         initCarousels();
         initLightbox();
         initZoomHints();
+        initProjectCardStack();
 
         // Enlace directo a un modulo de sistemas: muestra la pestana Unreal
         if (window.location.hash.indexOf('#u3-') === 0) {
