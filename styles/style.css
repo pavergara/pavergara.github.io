@@ -1043,26 +1043,28 @@ footer .location {
 /* alto (width/height) de la imagen se mantienen, por lo que la       */
 /* diagramación no se mueve. Los contenedores con overflow: hidden    */
 /* (.project-card, .slide-media) recortan el desborde del zoom.       */
-/* Las miniaturas de las tarjetas de Unity son <video> con poster:    */
-/* se incluyen para que el efecto también se vea ahí.                 */
-img,
-.project-video {
-    transition: transform 0.5s ease;
-}
+/* Solo aplica con puntero real: en móviles y tablets el :hover se    */
+/* queda "pegado" después de un tap y la imagen quedaría ampliada.    */
+@media (hover: hover) and (pointer: fine) {
+    img,
+    .project-video {
+        transition: transform 0.5s ease;
+    }
 
-img:hover,
-.project-video:hover {
-    transform: scale(1.04);
-}
+    img:hover,
+    .project-video:hover {
+        transform: scale(1.04);
+    }
 
-/* La imagen del lightbox vive en un contenedor con overflow: auto:   */
-/* ampliarla haría aparecer barras de scroll al pasar el mouse.       */
-.lightbox-inner img {
-    transition: none;
-}
+    /* La imagen del lightbox vive en un contenedor con overflow: auto: */
+    /* ampliarla haría aparecer barras de scroll al pasar el mouse.     */
+    .lightbox-inner img {
+        transition: none;
+    }
 
-.lightbox-inner img:hover {
-    transform: none;
+    .lightbox-inner img:hover {
+        transform: none;
+    }
 }
 
 /* Accesibilidad: sin animación ni zoom si el usuario pidió menos movimiento */

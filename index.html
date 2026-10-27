@@ -908,8 +908,8 @@
 
             const desktopQuery = window.matchMedia('(min-width: 769px)');
             const motionQuery = window.matchMedia('(prefers-reduced-motion: no-preference)');
-            const STACK_GAP = 12;       // px entre el borde de una tarjeta y la siguiente
-            const MIN_TOP = 16;         // separacion minima respecto al borde superior
+            const STACK_GAPS = [12, 8, 4, 0];  // separacion entre tarjetas, de mayor a menor
+            const MIN_TOP = 0;         // en pantallas bajas el stack puede pegarse al borde
             const MAX_TOP = 120;        // separacion maxima respecto al borde superior
             const SCALE_DEPTH = 0.06;   // cuanto se encoge la tarjeta que queda debajo
 
@@ -929,8 +929,7 @@
                 panelCards.forEach((card, index) => {
                     card.classList.add('is-stack-item');
                     card.style.setProperty('--stack-z', String(zIndex));
-                    card.style.setProperty('--stack-offset', (index * STACK_GAP) + 'px');
-                    stackedCards.push({ card, index, next: panelCards[index + 1] || null });
+                    stackedCards.push({ card, next: panelCards[index + 1] || null });
                     zIndex += 1;
                 });
             });
@@ -939,26 +938,37 @@
 
             // Solo se apila el panel completo si TODAS sus tarjetas caben en el
             // alto visible: una tarjeta mas alta que la ventana dejaria su final
-            // fuera de pantalla mientras esta pegada. Si no caben, se conserva
-            // el flujo normal para no mostrar recortes.
+            // fuera de pantalla mientras esta pegada. En pantallas bajas se
+            // reduce la separacion (incluso a 0) antes de renunciar al efecto.
             function measure() {
                 const height = window.innerHeight;
                 const preferred = Math.min(MAX_TOP, Math.max(72, Math.round(height * 0.1)));
 
                 panels.forEach((panelCards, panel) => {
-                    let top = Infinity;
+                    if (panelCards.every(card => card.offsetHeight === 0)) return;  // panel oculto
+
+                    let gap = 0;
+                    let top = 0;
+                    let fits = false;
+
+                    for (const candidate of STACK_GAPS) {
+                        const needed = Math.min(...panelCards.map(
+                            (card, index) => height - card.offsetHeight - index * candidate));
+                        if (needed >= MIN_TOP) {
+                            gap = candidate;
+                            top = needed;
+                            fits = true;
+                            break;
+                        }
+                    }
+
+                    panel.style.setProperty('--stack-top',
+                        Math.max(0, Math.min(preferred, Math.round(top))) + 'px');
 
                     panelCards.forEach((card, index) => {
-                        if (card.offsetHeight === 0) return;    // panel oculto
-                        top = Math.min(top, height - card.offsetHeight - index * STACK_GAP);
+                        card.style.setProperty('--stack-offset', (index * gap) + 'px');
+                        card.classList.toggle('is-stacked', fits);
                     });
-
-                    if (top === Infinity) return;               // nada visible que medir
-
-                    const fits = top >= MIN_TOP;
-                    panel.style.setProperty('--stack-top',
-                        Math.max(MIN_TOP, Math.min(preferred, Math.round(top))) + 'px');
-                    panelCards.forEach(card => card.classList.toggle('is-stacked', fits));
                 });
 
                 update();
